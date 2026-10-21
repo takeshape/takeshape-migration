@@ -1,0 +1,18 @@
+{% set firstPage = 1 %}
+<!doctype html>
+<html>
+<body>
+<ul class="pagination__list">
+  {% if pagination.currentPage == firstPage or pagination.currentPage == pagination.totalPages %}{% else %}
+    <li><a class="is-current">{{ pagination.currentPage }}</a></li>
+  {% endif %}
+
+  {% if other.currentPage == firstPage or other.currentPage == other.totalPages %}{% else %}
+    <li><a class="is-current">{{ other.currentPage }}</a></li>
+  {% endif %}
+  {% if other.currentPage > 4 %}
+    <li>&hellip;</li>
+  {% endif %}
+</ul>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<!doctype html>
+<html>
+{# A layout where each page names its body class in a block #}
+<body class="{% block body_class %}body{% endblock %}" data-x="1">
+{% block content %}{% endblock %}
+</body>
+</html>

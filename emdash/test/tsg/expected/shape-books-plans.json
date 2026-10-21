@@ -1,0 +1,389 @@
+[
+  {
+    "file": "data/site.graphql",
+    "variables": [],
+    "legacyFields": true,
+    "paginatedAlias": "books",
+    "fields": [
+      {
+        "alias": "settings",
+        "query": "getSiteSettings",
+        "shape": "SiteSettings",
+        "collection": "site_settings",
+        "op": "single",
+        "args": { "sort": [], "where": null, "filter": null, "size": null, "from": null, "id": null },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "siteTitle", "source": { "kind": "scalar", "field": "site_title" }, "selection": [] }
+        ]
+      },
+      {
+        "alias": "books",
+        "query": "getBookList",
+        "shape": "Book",
+        "collection": "books",
+        "op": "list",
+        "args": { "sort": [], "where": null, "filter": null, "size": null, "from": null, "id": null },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "total", "source": { "kind": "listTotal" }, "selection": [] },
+          {
+            "alias": "items",
+            "source": { "kind": "listItems" },
+            "selection": [
+              { "alias": "_contentTypeName", "source": { "kind": "meta", "name": "_contentTypeName" }, "selection": [] },
+              { "alias": "_enabledAt", "source": { "kind": "meta", "name": "_enabledAt" }, "selection": [] },
+              { "alias": "title", "source": { "kind": "scalar", "field": "title", "default": "" }, "selection": [] },
+              {
+                "alias": "author",
+                "source": { "kind": "reference", "field": "author", "target": "Author", "collection": "authors", "multiple": false },
+                "selection": [{ "alias": "name", "source": { "kind": "scalar", "field": "name", "default": "" }, "selection": [] }]
+              },
+              {
+                "alias": "coverImage",
+                "source": { "kind": "asset", "field": "cover_image", "multiple": false },
+                "selection": [{ "alias": "path", "source": { "kind": "assetField", "name": "path" }, "selection": [] }]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "data/sitemap.graphql",
+    "variables": [],
+    "legacyFields": true,
+    "paginatedAlias": null,
+    "fields": [
+      {
+        "alias": "homepage",
+        "query": "getHomepage",
+        "shape": "Homepage",
+        "collection": "homepage",
+        "op": "single",
+        "args": { "sort": [], "where": null, "filter": null, "size": null, "from": null, "id": null },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "_updatedAt", "source": { "kind": "meta", "name": "_updatedAt" }, "selection": [] }
+        ]
+      },
+      {
+        "alias": "posts",
+        "query": "getPostList",
+        "shape": "Post",
+        "collection": "posts",
+        "op": "list",
+        "args": { "sort": [], "where": null, "filter": null, "size": null, "from": null, "id": null },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "total", "source": { "kind": "listTotal" }, "selection": [] },
+          {
+            "alias": "items",
+            "source": { "kind": "listItems" },
+            "selection": [
+              { "alias": "title", "source": { "kind": "scalar", "field": "title", "default": "" }, "selection": [] },
+              { "alias": "_updatedAt", "source": { "kind": "meta", "name": "_updatedAt" }, "selection": [] }
+            ]
+          }
+        ]
+      },
+      {
+        "alias": "books",
+        "query": "getBookList",
+        "shape": "Book",
+        "collection": "books",
+        "op": "list",
+        "args": { "sort": [], "where": null, "filter": null, "size": null, "from": null, "id": null },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "total", "source": { "kind": "listTotal" }, "selection": [] },
+          {
+            "alias": "items",
+            "source": { "kind": "listItems" },
+            "selection": [
+              { "alias": "title", "source": { "kind": "scalar", "field": "title", "default": "" }, "selection": [] },
+              { "alias": "_updatedAt", "source": { "kind": "meta", "name": "_updatedAt" }, "selection": [] }
+            ]
+          }
+        ]
+      },
+      {
+        "alias": "authors",
+        "query": "getAuthorList",
+        "shape": "Author",
+        "collection": "authors",
+        "op": "list",
+        "args": { "sort": [], "where": null, "filter": null, "size": null, "from": null, "id": null },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "total", "source": { "kind": "listTotal" }, "selection": [] },
+          {
+            "alias": "items",
+            "source": { "kind": "listItems" },
+            "selection": [
+              { "alias": "name", "source": { "kind": "scalar", "field": "name", "default": "" }, "selection": [] },
+              { "alias": "_updatedAt", "source": { "kind": "meta", "name": "_updatedAt" }, "selection": [] }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "data/homepage.graphql",
+    "variables": [],
+    "legacyFields": true,
+    "paginatedAlias": "posts",
+    "fields": [
+      {
+        "alias": "page",
+        "query": "getHomepage",
+        "shape": "Homepage",
+        "collection": "homepage",
+        "op": "single",
+        "args": { "sort": [], "where": null, "filter": null, "size": null, "from": null, "id": null },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "title", "source": { "kind": "scalar", "field": "title" }, "selection": [] },
+          {
+            "alias": "hero",
+            "source": { "kind": "object", "fields": ["hero_image"], "references": ["hero_featured_post"] },
+            "selection": [
+              {
+                "alias": "image",
+                "source": { "kind": "asset", "field": "hero_image", "multiple": false },
+                "selection": [{ "alias": "path", "source": { "kind": "assetField", "name": "path" }, "selection": [] }]
+              },
+              {
+                "alias": "featuredPost",
+                "source": { "kind": "reference", "field": "hero_featured_post", "target": "Post", "collection": "posts", "multiple": false },
+                "selection": [
+                  { "alias": "title", "source": { "kind": "scalar", "field": "title", "default": "" }, "selection": [] },
+                  {
+                    "alias": "author",
+                    "source": { "kind": "reference", "field": "author", "target": "Author", "collection": "authors", "multiple": false },
+                    "selection": [{ "alias": "name", "source": { "kind": "scalar", "field": "name", "default": "" }, "selection": [] }]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "alias": "featuredBook",
+            "source": { "kind": "reference", "field": "featured_book", "target": "Book", "collection": "books", "multiple": false },
+            "selection": [
+              { "alias": "title", "source": { "kind": "scalar", "field": "title", "default": "" }, "selection": [] },
+              {
+                "alias": "author",
+                "source": { "kind": "reference", "field": "author", "target": "Author", "collection": "authors", "multiple": false },
+                "selection": [{ "alias": "name", "source": { "kind": "scalar", "field": "name", "default": "" }, "selection": [] }]
+              },
+              {
+                "alias": "genre",
+                "source": { "kind": "taxonomy", "taxonomy": "genre", "multiple": false },
+                "selection": [{ "alias": "title", "source": { "kind": "scalar", "field": "label" }, "selection": [] }]
+              },
+              {
+                "alias": "coverImage",
+                "source": { "kind": "asset", "field": "cover_image", "multiple": false },
+                "selection": [{ "alias": "path", "source": { "kind": "assetField", "name": "path" }, "selection": [] }]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "alias": "posts",
+        "query": "getPostList",
+        "shape": "Post",
+        "collection": "posts",
+        "op": "list",
+        "args": { "sort": [], "where": null, "filter": null, "size": null, "from": null, "id": null },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "total", "source": { "kind": "listTotal" }, "selection": [] },
+          {
+            "alias": "items",
+            "source": { "kind": "listItems" },
+            "selection": [
+              { "alias": "title", "source": { "kind": "scalar", "field": "title", "default": "" }, "selection": [] },
+              { "alias": "_enabledAt", "source": { "kind": "meta", "name": "_enabledAt" }, "selection": [] },
+              { "alias": "deck", "source": { "kind": "scalar", "field": "deck" }, "selection": [] },
+              {
+                "alias": "featureImage",
+                "source": { "kind": "asset", "field": "feature_image", "multiple": false },
+                "selection": [{ "alias": "path", "source": { "kind": "assetField", "name": "path" }, "selection": [] }]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "data/posts.graphql",
+    "variables": [],
+    "legacyFields": true,
+    "paginatedAlias": "getPostList",
+    "fields": [
+      {
+        "alias": "getPostList",
+        "query": "getPostList",
+        "shape": "Post",
+        "collection": "posts",
+        "op": "list",
+        "args": {
+          "sort": [{ "field": "takeshape_published_at", "order": "desc" }],
+          "where": null,
+          "filter": null,
+          "size": null,
+          "from": null,
+          "id": null
+        },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "total", "source": { "kind": "listTotal" }, "selection": [] },
+          {
+            "alias": "items",
+            "source": { "kind": "listItems" },
+            "selection": [
+              { "alias": "_contentTypeName", "source": { "kind": "meta", "name": "_contentTypeName" }, "selection": [] },
+              { "alias": "_enabledAt", "source": { "kind": "meta", "name": "_enabledAt" }, "selection": [] },
+              { "alias": "title", "source": { "kind": "scalar", "field": "title", "default": "" }, "selection": [] },
+              {
+                "alias": "tags",
+                "source": { "kind": "taxonomy", "taxonomy": "tag", "multiple": true },
+                "selection": [{ "alias": "name", "source": { "kind": "scalar", "field": "label" }, "selection": [] }]
+              },
+              { "alias": "deck", "source": { "kind": "scalar", "field": "deck" }, "selection": [] },
+              {
+                "alias": "author",
+                "source": { "kind": "reference", "field": "author", "target": "Author", "collection": "authors", "multiple": false },
+                "selection": [{ "alias": "name", "source": { "kind": "scalar", "field": "name", "default": "" }, "selection": [] }]
+              },
+              {
+                "alias": "featureImage",
+                "source": { "kind": "asset", "field": "feature_image", "multiple": false },
+                "selection": [{ "alias": "path", "source": { "kind": "assetField", "name": "path" }, "selection": [] }]
+              },
+              {
+                "alias": "bodyHtml",
+                "source": { "kind": "richTextHtml", "field": "body", "sidecar": "takeshape_rich_text", "args": {} },
+                "selection": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "data/books.graphql",
+    "variables": [],
+    "legacyFields": true,
+    "paginatedAlias": "getBookList",
+    "fields": [
+      {
+        "alias": "getBookList",
+        "query": "getBookList",
+        "shape": "Book",
+        "collection": "books",
+        "op": "list",
+        "args": { "sort": [], "where": null, "filter": null, "size": null, "from": null, "id": null },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "total", "source": { "kind": "listTotal" }, "selection": [] },
+          {
+            "alias": "items",
+            "source": { "kind": "listItems" },
+            "selection": [
+              { "alias": "_contentTypeName", "source": { "kind": "meta", "name": "_contentTypeName" }, "selection": [] },
+              { "alias": "_enabledAt", "source": { "kind": "meta", "name": "_enabledAt" }, "selection": [] },
+              { "alias": "title", "source": { "kind": "scalar", "field": "title", "default": "" }, "selection": [] },
+              { "alias": "totalPages", "source": { "kind": "scalar", "field": "total_pages" }, "selection": [] },
+              { "alias": "type", "source": { "kind": "scalar", "field": "type" }, "selection": [] },
+              {
+                "alias": "genre",
+                "source": { "kind": "taxonomy", "taxonomy": "genre", "multiple": false },
+                "selection": [{ "alias": "title", "source": { "kind": "scalar", "field": "label" }, "selection": [] }]
+              },
+              {
+                "alias": "author",
+                "source": { "kind": "reference", "field": "author", "target": "Author", "collection": "authors", "multiple": false },
+                "selection": [{ "alias": "name", "source": { "kind": "scalar", "field": "name", "default": "" }, "selection": [] }]
+              },
+              {
+                "alias": "bodyHtml",
+                "source": { "kind": "richTextHtml", "field": "body", "sidecar": "takeshape_rich_text", "args": {} },
+                "selection": []
+              },
+              {
+                "alias": "coverImage",
+                "source": { "kind": "asset", "field": "cover_image", "multiple": false },
+                "selection": [{ "alias": "path", "source": { "kind": "assetField", "name": "path" }, "selection": [] }]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "data/authors.graphql",
+    "variables": [],
+    "legacyFields": true,
+    "paginatedAlias": "page",
+    "fields": [
+      {
+        "alias": "page",
+        "query": "getAuthorList",
+        "shape": "Author",
+        "collection": "authors",
+        "op": "list",
+        "args": { "sort": [], "where": null, "filter": null, "size": null, "from": null, "id": null },
+        "legacyListShape": false,
+        "selection": [
+          { "alias": "total", "source": { "kind": "listTotal" }, "selection": [] },
+          {
+            "alias": "items",
+            "source": { "kind": "listItems" },
+            "selection": [
+              { "alias": "name", "source": { "kind": "scalar", "field": "name", "default": "" }, "selection": [] },
+              {
+                "alias": "photo",
+                "source": { "kind": "asset", "field": "photo", "multiple": false },
+                "selection": [{ "alias": "path", "source": { "kind": "assetField", "name": "path" }, "selection": [] }]
+              },
+              { "alias": "biography", "source": { "kind": "draftJson", "field": "biography", "sidecar": "takeshape_rich_text" }, "selection": [] },
+              {
+                "alias": "biographyHtml",
+                "source": { "kind": "richTextHtml", "field": "biography", "sidecar": "takeshape_rich_text", "args": {} },
+                "selection": []
+              },
+              {
+                "alias": "authored",
+                "source": { "kind": "reverse", "shape": "Book", "property": "author", "collection": "books", "field": "author" },
+                "selection": [
+                  { "alias": "total", "source": { "kind": "listTotal" }, "selection": [] },
+                  {
+                    "alias": "items",
+                    "source": { "kind": "listItems" },
+                    "selection": [
+                      { "alias": "title", "source": { "kind": "scalar", "field": "title", "default": "" }, "selection": [] },
+                      {
+                        "alias": "coverImage",
+                        "source": { "kind": "asset", "field": "cover_image", "multiple": false },
+                        "selection": [{ "alias": "path", "source": { "kind": "assetField", "name": "path" }, "selection": [] }]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{% from "macros/lib.html" import pair, picture %}
+{% macro local(x) %}<s>{{ x }}</s>{% endmacro %}
+<!doctype html>
+<html>
+<body>
+<p>{{ pair() }}</p>
+<p>{{ pair(a="given") }}</p>
+<p>{{ pair("one", "two") }}</p>
+<p>{{ picture(photo) }}</p>
+{# A macro's result kept in a name prints as HTML, an ordinary string as text #}
+{% set result = local("<b>hi</b>") %}
+<p>{{ result }}</p>
+{% set plain = "<i>plain</i>" %}
+<p>{{ plain }}</p>
+{% if photo %}{% set either = local("branch") %}{% else %}{% set either = "<u>text</u>" %}{% endif %}
+<p>{{ either }}</p>
+{# Keyword arguments run in the order written: b gets the joiner's first call, a its second #}
+{% macro pairOf(a, b) %}[{{ a }}|{{ b }}]{% endmacro %}
+{% set j = joiner(",") %}
+<p>{{ pairOf(b=j(), a=j()) }}</p>
+</body>
+</html>

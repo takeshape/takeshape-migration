@@ -1,0 +1,4 @@
+{
+  "outside": "page context",
+  "items": [{ "title": "Loop one", "tags": ["l1"] }, { "title": "Loop two", "tags": [] }]
+}

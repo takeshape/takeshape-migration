@@ -1,0 +1,7 @@
+{
+  "site": {},
+  "lang": "en",
+  "label": "Context label",
+  "posts": [{ "title": "One", "summary": "First post" }, { "title": "Two" }],
+  "showFooter": true
+}

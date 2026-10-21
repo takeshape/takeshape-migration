@@ -1,0 +1,1 @@
+<feed>{{ x }}{% include "partials/static.html" %}</feed>

@@ -1,0 +1,9 @@
+{
+  "data": { "title": "Page title", "tout": { "heading": "Tout heading" }, "hero": { "heading": "Hero heading", "background": "hero.png" }, "subtitle": "Sub" },
+  "size": "large",
+  "label": "context label",
+  "tone": "context tone",
+  "showBox": true,
+  "note": "context note",
+  "items": [{ "title": "First" }, { "name": "Second" }, {}]
+}

@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<style>
+  .a { color: red; }
+  .b > .c::after { content: "{"; }
+</style>
+<script>
+  var config = { name: "{{ name }}", n: {{ n }} };
+  if (config.n < 2 && config.n > 0) { console.log(`${config.name}`); }
+</script>
+<script src="/javascripts/main.js"></script>
+</head>
+<body>
+<p>Braces in text: { not an expression } and {{ "{" }} and {{ '}' }}</p>
+<script type="application/ld+json">{"name": "{{ name }}", "list": [{% for t in tags %}"{{ t }}"{% if not loop.last %}, {% endif %}{% endfor %}]}</script>
+<style media="print">body { color: {% if dark %}#fff{% else %}#000{% endif %}; }</style>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "layouts/default.html" %}
+
+{% if page.social.title %}
+{% set title = page.social.title %}
+{% else %}
+{% set title = page.title %}
+{% endif %}
+
+{% if page.kind == "story" %}
+  {% set bodyClass = "body--story" %}
+{% elif page.kind == "page" %}
+  {% set bodyClass = "body--page" %}
+{% endif %}
+
+{% block content %}
+  {% if page.hero.heading %}
+    {% set pageHeading = page.hero.heading %}
+  {% else %}
+    {% set pageHeading = title %}
+  {% endif %}
+  <h1>{{ pageHeading }}</h1>
+  <p>{{ title }}</p>
+  {% include "partials/share.html" %}
+{% endblock %}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{ title }} &amp; more</title>
+  <meta name="description" content="{{ description }}">
+</head>
+<body>
+  <h1 class="title">{{ title }}</h1>
+  <p>Static: Tom &amp; Jerry &lt;3 &quot;quoted&quot; it's café, naïve, Grüße, 東京 &copy; &hellip;</p>
+  <p>Dynamic: {{ text }}</p>
+  <p>A lone < sign, a > sign, and a { brace } pair.</p>
+  <figure>
+    <img src="{{ image | image }}" alt="{{ caption }}">
+    <figcaption>{{ caption }}</figcaption>
+  </figure>
+  <a href="/search?q={{ query | urlencode }}&amp;page=2" title='{{ text }}' data-lit="Tom &amp; Jerry &quot;x&quot; it&#39;s {{ caption }}">{{ query }}</a>
+  <p data-static="Tom &amp; Jerry &quot;x&quot; it&#39;s café">static attribute</p>
+  <div class="body">{{ html | safe }}</div>
+  <p>{{ html }}</p>
+  <p>{{ html | escape }}</p>
+</body>
+</html>

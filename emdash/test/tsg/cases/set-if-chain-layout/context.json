@@ -1,0 +1,4 @@
+{
+  "page": { "title": "Plain title", "social": { "title": "Social title" }, "kind": "post", "hero": {} },
+  "bodyClass": "body--default"
+}

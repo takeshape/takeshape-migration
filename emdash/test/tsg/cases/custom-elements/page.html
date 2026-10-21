@@ -1,0 +1,10 @@
+<!doctype html>
+<html>
+<body>
+<my-el disabled data-x class="a" title="q &amp; r">static</my-el>
+<my-el {% if c %}disabled{% endif %} data-n="{{ n }}">dynamic</my-el>
+<x-card title="{{ title }}" hidden><span>{{ title }}</span></x-card>
+<ui-badge/>
+<p>after</p>
+</body>
+</html>

@@ -1,0 +1,25 @@
+node_modules
+dist
+dist-node
+.astro
+.emdash/migrations.json
+uploads
+data.db
+data.db-shm
+data.db-wal
+# The media preload's record (ts2emdash --preload-media): it describes the files in uploads/, which stay out too
+takeshape/takeshape-media.db*
+# The content seed holds every entry, drafts included, and can pass GitHub's 100 MB file limit. The deployed site
+# gets its content by site import, and ts2emdash writes the seed again from the export.
+takeshape/takeshape.seed.json
+# Originals compare-sites --media downloaded because the preload's record lacks them (takeshape/image-index.json, the
+# compare's record of imgix's answers, stays in git)
+takeshape/compare-originals/
+.wrangler
+
+# Environment / Wrangler secrets
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*

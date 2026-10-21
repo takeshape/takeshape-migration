@@ -1,0 +1,1 @@
+{% for item in items %}<li>{{ item.title }}{% if item.children %}<ul>{% set items = item.children %}{% include "menu.html" %}</ul>{% endif %}</li>{% endfor %}

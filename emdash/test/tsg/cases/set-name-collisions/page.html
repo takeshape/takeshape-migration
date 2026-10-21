@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+<body>
+{# Names the translator makes for a set again further down and for loop idioms must not take a name the template already reads #}
+{% set x = 1 %}
+<p>{{ x }}</p>
+{% set x = 2 %}
+<p>{{ x }}/{{ x__2 }}</p>
+{% set c = 0 %}
+{% for i in items %}<b>{{ c }} {{ c__run1 }}</b>{% set c = c + 1 %}{% endfor %}
+</body>
+</html>

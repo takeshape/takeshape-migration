@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<body>
+<div>
+<a class="x" {% if a %}class="y" {% if b %}class="z"{% endif %}{% endif %}>dup</a>
+<a {% if a %}title="t" {% if b %}title="u"{% endif %}{% endif %}>dup2</a>
+<a {% if a %}{% if b %}title="u" {% endif %}title="t"{% endif %}>dup3</a>
+<a {% if a %}class="p"{% else %}class="q"{% endif %} {% if b %}id="i"{% endif %}>alternatives</a>
+<div {% if a %}hidden{% endif %}>h</div>
+</div>
+<form>
+<input type="checkbox" name="c1" {% if a %}checked=""{% endif %}>
+<input type="checkbox" name="c2" {% if a %}checked=''{% endif %}>
+<input name="c3" {% if a %}disabled="disabled"{% endif %}>
+<input name="c4" {% if a %}readonly{% endif %} {% if b %}required=""{% endif %}>
+<div {% if a %}popover{% endif %}>pop</div>
+</form>
+</body>
+</html>

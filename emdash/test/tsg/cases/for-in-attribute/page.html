@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<body>
+{# A Vue component's list written out by a loop inside the attribute #}
+<section-nav
+    :heading="'Sections'"
+    :links="[
+        {% if page.groups.length > 0 %}
+            {% for item in page.groups[0].topics %}
+                { label: '{{ item.title }}', href: '/topics/{{ item.slug }}/', current: {{ item.slug == page.slug }} }{{ "," if not loop.last }}
+            {% endfor %}
+        {% endif %}
+    ]"
+    :selected="'{{ page.slug }}'"
+></section-nav>
+<span data-empty="{% for s in empty %}x{% else %}none{% endfor %}">y</span>
+<a {% for c in classes %}data-{{ c }}="1" {% endfor %}href="/">z</a>
+</body>
+</html>

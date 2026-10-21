@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<body>
+{# Counters set before a loop and stepped as the loop body's last tag #}
+{% set sectionCounter = 1 %}
+{% for p in sections %}
+<div id="section-{{ sectionCounter }}">
+  {% set sliderCounter = 1 %}
+  {% for c in p.cols %}<i class="slider-{{ sliderCounter }}">{{ c }}</i>
+  {% set sliderCounter = sliderCounter + 1 %}
+  {% endfor %}
+</div>
+{% set sectionCounter = sectionCounter + 2 %}
+{% endfor %}
+{# A list built with concat in a loop, Nunjucks's stand-in for a map #}
+{% if list.length > 0 %}
+  {% set items = [] %}
+  {% for x in list %}
+    {% set items = items.concat([{ text: x.name, url: "/topics/" + x.slug + "/" }]) %}
+  {% endfor %}
+{% else %}
+  {% set items = [] %}
+{% endif %}
+<ul>{% for i in items %}<li><a href="{{ i.url }}">{{ i.text }}</a></li>{% endfor %}</ul>
+{% set kept = ["first"] %}
+{% for x in empty %}{% set kept = kept.concat([x]) %}{% endfor %}
+<p>{{ kept | join(",") }}</p>
+</body>
+</html>

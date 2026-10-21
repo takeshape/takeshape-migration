@@ -1,0 +1,6 @@
+{
+  "books": [{ "title": "Peter Pan" }, { "title": "Treasure Island" }],
+  "line": "context line",
+  "note": "context note",
+  "showNote": true
+}

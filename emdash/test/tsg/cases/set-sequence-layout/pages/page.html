@@ -1,0 +1,15 @@
+{% extends "layouts/default.html" %}
+{# Two chains set the heading before the blocks, which see the last value #}
+{% block body_class %}page {{ heading }}{% endblock %}
+{% if a %}{% set heading = a %}{% else %}{% set heading = "default" %}{% endif %}
+{% if b %}{% set heading = b %}{% endif %}
+{% block content %}
+<h1>{{ heading }}</h1>
+{# A partial included after each set #}
+{% set current = sections[0] %}
+{% set active = false %}
+{% include "partials/card.html" %}
+{% set current = sections[1] %}
+{% set active = true %}
+{% include "partials/card.html" %}
+{% endblock %}

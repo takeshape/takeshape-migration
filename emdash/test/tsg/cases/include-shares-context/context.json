@@ -1,0 +1,8 @@
+{
+  "kind": "books",
+  "site": { "name": "Shape Books" },
+  "books": [
+    { "title": "Peter Pan", "author": "J. M. Barrie" },
+    { "title": "Treasure Island", "author": "Robert Louis Stevenson" }
+  ]
+}

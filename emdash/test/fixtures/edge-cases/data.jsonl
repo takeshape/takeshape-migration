@@ -1,0 +1,7 @@
+{"_id": "img1", "_shapeId": "ASSET", "_enabled": true, "Hk6FQuz5": "proj/dev/img1/photo one.jpg", "H1oYQOM9": "photo one.jpg", "SyCYX_Gq": "image/jpeg", "By5tQOMc": "Photo one"}
+{"_id": "img2", "_shapeId": "ASSET", "_enabled": true, "Hk6FQuz5": "proj/dev/img2/b.png", "H1oYQOM9": "b.png", "SyCYX_Gq": "image/png"}
+{"_id": "pdf1", "_shapeId": "ASSET", "_enabled": true, "Hk6FQuz5": "proj/dev/pdf1/brochure.pdf", "H1oYQOM9": "brochure.pdf", "SyCYX_Gq": "application/pdf"}
+{"_id": "a", "_shapeId": "P1", "_enabled": true, "_enabledAt": "2024-01-02T03:04:05Z", "t": "Post A", "s": "post-a", "b": "# Hello\n\nSee ![x](https://images.takeshape.io/proj/dev/img1/photo%20one.jpg?w=300) and [the PDF](https://assets.takeshape.io/proj/dev/pdf1/brochure.pdf).", "n": "Intro <Callout>Watch out</Callout>", "c": "news", "r": [{"shapeId": "P1", "id": "b"}], "g": [{"shapeId": "ASSET", "id": "img1"}, {"shapeId": "ASSET", "id": "img2"}], "st": "featured", "br": {"shapeId": "ASSET", "id": "pdf1"}}
+{"_id": "b", "_shapeId": "P1", "_enabled": true, "t": "Post B", "s": "post-a", "b": "Body B", "c": "guides", "r": [{"shapeId": "P1", "id": "a"}, {"shapeId": "P1", "id": "missing"}]}
+{"_id": "c", "_shapeId": "P1", "_enabled": false, "t": "Draft C", "b": "Draft body", "r": [{"shapeId": "P1", "id": "a"}]}
+{"_id": "set", "_shapeId": "S1", "_enabled": true, "sn": "Synth Site", "f": {"shapeId": "P1", "id": "a"}}

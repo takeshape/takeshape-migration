@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<body>
+  <p>[{{ a.b.c }}]</p>
+  <p>[{{ page.hero.featuredPost.author.name }}]</p>
+  <p>[{{ page.missing }}] [{{ nothing }}] [{{ page["title"] }}] [{{ page.hero["featuredPost"] }}]</p>
+  <img src="{{ page.hero.image | image }}">
+  <a href="{{ page.hero.featuredPost | route('posts') }}">{{ page.hero.featuredPost.title }}</a>
+  <ul>{% for p in posts.items %}<li>{{ p.title }}</li>{% else %}<li>none</li>{% endfor %}</ul>
+  <ul>{% for p in page.hero.featuredPost.related %}<li>{{ p.title }}</li>{% endfor %}</ul>
+  {% if page.hero.flag %}<p>flag</p>{% else %}<p>no flag</p>{% endif %}
+  {% if page.hero.featuredPost.author.name %}<p>author</p>{% endif %}
+  <p>{{ page.tags | length }} {{ missing | default("fallback") }} {{ page.count + 1 }}</p>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% set heading = "Our " ~ kind %}
+<!doctype html>
+<html>
+<body>
+{% include "partials/heading.html" %}
+<ul>
+{% for book in books %}
+  {% include "partials/book.html" %}
+{% endfor %}
+</ul>
+{% include "partials/footer.html" %}
+<p>[{{ year }}]</p>
+</body>
+</html>

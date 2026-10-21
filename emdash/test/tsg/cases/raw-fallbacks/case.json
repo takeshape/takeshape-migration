@@ -1,0 +1,10 @@
+{
+  "entry": "page.html",
+  "contains": [
+    "<!-- built for Shape &amp; Books -->",
+    "<!doctype html>\n<html>"
+  ],
+  "absent": [
+    "<!DOCTYPE html>"
+  ]
+}

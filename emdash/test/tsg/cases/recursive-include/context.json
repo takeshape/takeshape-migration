@@ -1,0 +1,4 @@
+{
+  "tree": [{ "title": "A", "children": [{ "title": "A1" }, { "title": "A2", "children": [{ "title": "A2a" }] }] }, { "title": "B" }],
+  "menu": [{ "title": "Books", "children": [{ "title": "Fiction" }, { "title": "Poetry" }] }, { "title": "Authors" }]
+}

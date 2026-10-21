@@ -1,0 +1,7 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<main class="middle">
+  {% block main %}<p>Middle default main</p>{% endblock %}
+</main>
+{% endblock %}
+{% block footer %}Middle footer, {{ site.name }}{% endblock %}

@@ -1,0 +1,4 @@
+{"_id": "u1", "_shapeId": "U1", "_enabled": true, "nm": "Ada", "tm": "t"}
+{"_id": "m1", "_shapeId": "M1", "_enabled": true, "nm": "X m1", "tm": "x", "ow": {"shapeId": "U1", "id": "u1"}}
+{"_id": "c1", "_shapeId": "C1", "_enabled": true, "nm": "X c1", "tm": "x", "ow": {"shapeId": "U1", "id": "u1"}}
+{"_id": "r1", "_shapeId": "R1", "_enabled": true, "nm": "X r1", "tm": "x", "ow": {"shapeId": "U1", "id": "u1"}}

@@ -1,0 +1,3 @@
+{# A default reads the parameters before it, as Nunjucks sets them in order; a filter only in a default still loads #}
+{% macro pair(a="A", b=a) %}<span>{{ a }}/{{ b }}</span>{% endmacro %}
+{% macro picture(url, src=url | asset) %}<img src="{{ src }}">{% endmacro %}

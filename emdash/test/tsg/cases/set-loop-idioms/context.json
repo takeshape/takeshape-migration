@@ -1,0 +1,5 @@
+{
+  "sections": [{ "cols": ["a", "b"] }, { "cols": ["c"] }],
+  "list": [{ "name": "Maps", "slug": "maps" }, { "name": "Guides", "slug": "guides" }],
+  "empty": []
+}

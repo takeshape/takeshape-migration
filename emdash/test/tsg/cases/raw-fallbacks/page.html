@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<body>
+<!-- built for {{ site.name }} -->
+<h{{ level }} class="heading">Level {{ level }}</h{{ level }}>
+<select name="s"><option value="a" selected="{{ selected }}">A</option></select>
+<a title="{{ html | safe }}" href="/">safe in an attribute</a>
+<p class="a" {% if flag %}data-x="&hellip; {{ level }}"{% endif %}>unknown entity in a branch</p>
+<DIV class="upper">{{ site.name }}</DIV>
+<div/>
+<p>after a slash-closed div</p>
+<svg viewBox="0 0 10 10" width="{{ size }}"><path d="M0 0L10 10" stroke="{{ color }}"/><circle r="2"></circle></svg>
+<ul>
+  {% for item in items %}<li>{{ item }}{% endfor %}
+</ul>
+{% if flag %}<section class="opened-in-a-branch">{% endif %}
+<p>inside or outside</p>
+{% if flag %}</section>{% endif %}
+</body>
+</html>

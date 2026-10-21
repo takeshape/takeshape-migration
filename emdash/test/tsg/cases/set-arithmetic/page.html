@@ -1,0 +1,27 @@
+{% set paginationString = 'posts.paginate' %}
+{% set paginationFirstPage = '/blog' %}
+
+{% set firstPage = 1 %}
+{% set farPreviousPage = pagination.currentPage - 2 %}
+{% set previousPage = pagination.currentPage - 1 %}
+
+{% set nextPage = pagination.currentPage + 1 %}
+{% set farNextPage = pagination.currentPage + 2 %}
+
+{% set fourthLast = pagination.totalPages - 3 %}
+{% set thirdLast = pagination.totalPages - 2 %}
+{% set secondLast = pagination.totalPages - 1 %}
+
+<!doctype html>
+<html>
+<body>
+<ul>
+  <li>{{ paginationString }} {{ paginationFirstPage }} {{ firstPage }}</li>
+  <li>{{ farPreviousPage }} {{ previousPage }} {{ nextPage }} {{ farNextPage }}</li>
+  <li>{{ fourthLast }} {{ thirdLast }} {{ secondLast }}</li>
+  <li><a href="{{ farPreviousPage | route(paginationString) }}">{{ farPreviousPage }}</a></li>
+  <li><a href="{{ nextPage | route(paginationString) }}">{{ nextPage }}</a></li>
+  <li>{{ pagination.totalPages // 2 }} {{ pagination.currentPage * 10 / 4 }} {{ pagination.totalPages % 3 }} {{ "p" ~ nextPage }}</li>
+</ul>
+</body>
+</html>

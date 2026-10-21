@@ -1,0 +1,7 @@
+<!doctype html>
+<html>
+<body>
+<ul class="tree">{% for node in tree %}{% include "node.html" %}{% endfor %}</ul>
+<ul class="menu">{% set items = menu %}{% include "menu.html" %}</ul>
+</body>
+</html>

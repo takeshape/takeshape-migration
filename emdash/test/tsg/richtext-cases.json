@@ -1,0 +1,1206 @@
+{
+	"args": {
+		"classPrefix": "rt-",
+		"headerIdPrefix": "h-",
+		"images": {
+			"default": {
+				"w": 800,
+				"fit": "crop"
+			},
+			"medium": {
+				"w": 400
+			}
+		}
+	},
+	"assets": [
+		{
+			"id": "img1",
+			"path": "proj/dev/img1/photo one's (1).jpg",
+			"filename": "photo one's (1).jpg",
+			"mimeType": "image/jpeg",
+			"title": "Photo \"one\" & <co>",
+			"description": "Jo's alt & <b>"
+		},
+		{
+			"id": "img2",
+			"path": "proj/dev/img2/b.png",
+			"filename": "b.png",
+			"mimeType": "image/png",
+			"title": "Photo two"
+		}
+	],
+	"cases": {
+		"duplicate-heading": {
+			"blocks": [
+				{
+					"key": "dh1",
+					"text": "X",
+					"type": "header-two",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "dh2",
+					"text": "Between",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "dh3",
+					"text": "X",
+					"type": "header-two",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "dh4",
+					"text": "",
+					"type": "header-three",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "dh5",
+					"text": "Ünïcödé & Co. (Title)!",
+					"type": "header-one",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "dh6",
+					"text": "x",
+					"type": "header-six",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {}
+		},
+		"code-block": {
+			"blocks": [
+				{
+					"key": "cb1",
+					"text": "const a = 1 < 2 && \"x\";\nconsole.log(`${a}`); // done",
+					"type": "code-block",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {
+						"lang": "javascript"
+					}
+				},
+				{
+					"key": "cb2",
+					"text": "{\"a\": [1, true, null], \"b\": \"<c>\"}",
+					"type": "code-block",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {
+						"lang": "JSON"
+					}
+				},
+				{
+					"key": "cb3",
+					"text": "<div class=\"x\"><script>let a = 1;</script><style>p { color: red }</style></div>",
+					"type": "code-block",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {
+						"lang": "markup"
+					}
+				},
+				{
+					"key": "cb4",
+					"text": "echo \"$HOME\" | grep -v 'x' > out.txt",
+					"type": "code-block",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {
+						"lang": "bash"
+					}
+				},
+				{
+					"key": "cb5",
+					"text": "puts \"hi\" if a < b && c > d",
+					"type": "code-block",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {
+						"lang": "ruby"
+					}
+				},
+				{
+					"key": "cb6",
+					"text": "plain <code> & 'quotes'",
+					"type": "code-block",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "cb7",
+					"text": "",
+					"type": "code-block",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {
+						"lang": "css"
+					}
+				}
+			],
+			"entityMap": {}
+		},
+		"nested-list": {
+			"blocks": [
+				{
+					"key": "nl0",
+					"text": "Intro",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl1",
+					"text": "One",
+					"type": "unordered-list-item",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl2",
+					"text": "One.a",
+					"type": "unordered-list-item",
+					"depth": 1,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl3",
+					"text": "One.a.i",
+					"type": "unordered-list-item",
+					"depth": 2,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl4",
+					"text": "One.b",
+					"type": "unordered-list-item",
+					"depth": 1,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl5",
+					"text": "Two",
+					"type": "unordered-list-item",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl6",
+					"text": "First",
+					"type": "ordered-list-item",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl7",
+					"text": "First.a",
+					"type": "ordered-list-item",
+					"depth": 1,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl8",
+					"text": "Second",
+					"type": "ordered-list-item",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl9",
+					"text": "Skipped a level",
+					"type": "ordered-list-item",
+					"depth": 2,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl10",
+					"text": "",
+					"type": "unordered-list-item",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "nl11",
+					"text": "Outro",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {}
+		},
+		"small": {
+			"blocks": [
+				{
+					"key": "sm1",
+					"text": "Small print, then bold small, then plain.",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [
+						{
+							"offset": 0,
+							"length": 11,
+							"style": "SMALL"
+						},
+						{
+							"offset": 18,
+							"length": 10,
+							"style": "BOLD"
+						},
+						{
+							"offset": 18,
+							"length": 10,
+							"style": "SMALL"
+						}
+					],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {}
+		},
+		"inline-image": {
+			"blocks": [
+				{
+					"key": "ii1",
+					"text": "See pic here.",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [
+						{
+							"offset": 4,
+							"length": 3,
+							"key": 0
+						}
+					],
+					"data": {}
+				}
+			],
+			"entityMap": {
+				"0": {
+					"type": "IMAGE",
+					"mutability": "IMMUTABLE",
+					"data": {
+						"src": "https://example.test/a.png",
+						"alt": "An \"a\""
+					}
+				}
+			}
+		},
+		"missing-asset": {
+			"blocks": [
+				{
+					"key": "ma0",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "ma1",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "ma2",
+					"text": "Before",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "ma3",
+					"text": " ",
+					"type": "atomic",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [
+						{
+							"offset": 0,
+							"length": 1,
+							"key": 0
+						}
+					],
+					"data": {}
+				},
+				{
+					"key": "ma4",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "ma5",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "ma6",
+					"text": " ",
+					"type": "atomic",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [
+						{
+							"offset": 0,
+							"length": 1,
+							"key": 1
+						}
+					],
+					"data": {}
+				},
+				{
+					"key": "ma7",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "ma8",
+					"text": "After",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "ma9",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "ma10",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {
+				"0": {
+					"type": "image",
+					"mutability": "IMMUTABLE",
+					"data": {
+						"contentTypeId": "ASSET",
+						"id": "not-in-export",
+						"alignment": "center",
+						"size": "large"
+					}
+				},
+				"1": {
+					"type": "video",
+					"mutability": "IMMUTABLE",
+					"data": {
+						"url": "https://example.test/v.mp4"
+					}
+				}
+			}
+		},
+		"emoji-styled": {
+			"blocks": [
+				{
+					"key": "es1",
+					"text": "😀 bold 👍🏽 italic 🇳🇴 both",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [
+						{
+							"offset": 2,
+							"length": 4,
+							"style": "BOLD"
+						},
+						{
+							"offset": 10,
+							"length": 6,
+							"style": "ITALIC"
+						},
+						{
+							"offset": 20,
+							"length": 4,
+							"style": "BOLD"
+						},
+						{
+							"offset": 20,
+							"length": 4,
+							"style": "UNDERLINE"
+						}
+					],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {}
+		},
+		"stacked-marks": {
+			"blocks": [
+				{
+					"key": "st1",
+					"text": "all marks, then same styles twice",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [
+						{
+							"offset": 0,
+							"length": 9,
+							"style": "SUP"
+						},
+						{
+							"offset": 0,
+							"length": 9,
+							"style": "SUB"
+						},
+						{
+							"offset": 0,
+							"length": 9,
+							"style": "CODE"
+						},
+						{
+							"offset": 0,
+							"length": 9,
+							"style": "STRIKETHROUGH"
+						},
+						{
+							"offset": 0,
+							"length": 9,
+							"style": "UNDERLINE"
+						},
+						{
+							"offset": 0,
+							"length": 9,
+							"style": "ITALIC"
+						},
+						{
+							"offset": 0,
+							"length": 9,
+							"style": "BOLD"
+						}
+					],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "st2",
+					"text": "abcdefgh",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [
+						{
+							"offset": 0,
+							"length": 4,
+							"style": "BOLD"
+						},
+						{
+							"offset": 0,
+							"length": 8,
+							"style": "ITALIC"
+						},
+						{
+							"offset": 4,
+							"length": 4,
+							"style": "BOLD"
+						}
+					],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "st3",
+					"text": "Code style inside a code block",
+					"type": "code-block",
+					"depth": 0,
+					"inlineStyleRanges": [
+						{
+							"offset": 0,
+							"length": 4,
+							"style": "CODE"
+						}
+					],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {}
+		},
+		"soft-newline": {
+			"blocks": [
+				{
+					"key": "sn1",
+					"text": "line one\nline two\nline three",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [
+						{
+							"offset": 5,
+							"length": 8,
+							"style": "BOLD"
+						}
+					],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "sn2",
+					"text": "trailing\n",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {}
+		},
+		"whitespace": {
+			"blocks": [
+				{
+					"key": "ws1",
+					"text": "  two leading,  doubled   spaces, trailing  ",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [
+						{
+							"offset": 16,
+							"length": 16,
+							"style": "ITALIC"
+						}
+					],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "ws2",
+					"text": " ",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "ws3",
+					"text": "a & b < c > d \"e\" 'f'  g",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {}
+		},
+		"link-attrs": {
+			"blocks": [
+				{
+					"key": "la1",
+					"text": "Go to the site now or there.",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [
+						{
+							"offset": 6,
+							"length": 15,
+							"style": "BOLD"
+						}
+					],
+					"entityRanges": [
+						{
+							"offset": 3,
+							"length": 11,
+							"key": 0
+						},
+						{
+							"offset": 14,
+							"length": 4,
+							"key": 1
+						},
+						{
+							"offset": 22,
+							"length": 5,
+							"key": 2
+						}
+					],
+					"data": {}
+				}
+			],
+			"entityMap": {
+				"0": {
+					"type": "LINK",
+					"mutability": "MUTABLE",
+					"data": {
+						"url": "https://x.test/?a=1&b=\"2\"",
+						"rel": "nofollow noopener",
+						"className": "ext",
+						"data-x": "1",
+						"data-Bad": "no",
+						"title": "T <x>",
+						"target": "_self"
+					}
+				},
+				"1": {
+					"type": "LINK",
+					"mutability": "MUTABLE",
+					"data": {
+						"href": "https://y.test",
+						"target": "_blank"
+					}
+				},
+				"2": {
+					"type": "LINK",
+					"mutability": "MUTABLE",
+					"data": {
+						"title": "No url",
+						"rel": ""
+					}
+				}
+			}
+		},
+		"image-link": {
+			"blocks": [
+				{
+					"key": "il0",
+					"text": "Intro",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "il1",
+					"text": " ",
+					"type": "atomic",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [
+						{
+							"offset": 0,
+							"length": 1,
+							"key": 0
+						}
+					],
+					"data": {}
+				},
+				{
+					"key": "il2",
+					"text": " ",
+					"type": "atomic",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [
+						{
+							"offset": 0,
+							"length": 1,
+							"key": 1
+						}
+					],
+					"data": {}
+				},
+				{
+					"key": "il3",
+					"text": " ",
+					"type": "atomic",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [
+						{
+							"offset": 0,
+							"length": 1,
+							"key": 2
+						}
+					],
+					"data": {}
+				},
+				{
+					"key": "il4",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "il5",
+					"text": "Outro",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {
+				"0": {
+					"type": "image",
+					"mutability": "IMMUTABLE",
+					"data": {
+						"contentTypeId": "ASSET",
+						"id": "img1",
+						"alignment": "left",
+						"size": "medium",
+						"link": {
+							"url": "https://example.test/page?a=1&b=2",
+							"external": true
+						},
+						"caption": {
+							"blocks": [
+								{
+									"key": "c1",
+									"text": "A caption with H2O and x2",
+									"type": "unstyled",
+									"depth": 0,
+									"inlineStyleRanges": [
+										{
+											"offset": 16,
+											"length": 1,
+											"style": "SUB"
+										},
+										{
+											"offset": 24,
+											"length": 1,
+											"style": "SUP"
+										}
+									],
+									"entityRanges": [],
+									"data": {}
+								}
+							],
+							"entityMap": {}
+						},
+						"credit": {
+							"blocks": [
+								{
+									"key": "c2",
+									"text": "Photo by Jo & Co",
+									"type": "unstyled",
+									"depth": 0,
+									"inlineStyleRanges": [],
+									"entityRanges": [
+										{
+											"offset": 9,
+											"length": 2,
+											"key": 0
+										}
+									],
+									"data": {}
+								}
+							],
+							"entityMap": {
+								"0": {
+									"type": "LINK",
+									"mutability": "MUTABLE",
+									"data": {
+										"href": "https://jo.test",
+										"title": "Jo",
+										"url": "https://jo.test/"
+									}
+								}
+							}
+						}
+					}
+				},
+				"1": {
+					"type": "image",
+					"mutability": "IMMUTABLE",
+					"data": {
+						"contentTypeId": "ASSET",
+						"id": "img2",
+						"link": {
+							"url": "https://example.test/internal",
+							"external": false
+						},
+						"credit": {
+							"blocks": [
+								{
+									"key": "c3",
+									"text": "Credit only",
+									"type": "unstyled",
+									"depth": 0,
+									"inlineStyleRanges": [],
+									"entityRanges": [],
+									"data": {}
+								}
+							],
+							"entityMap": {}
+						}
+					}
+				},
+				"2": {
+					"type": "image",
+					"mutability": "IMMUTABLE",
+					"data": {
+						"contentTypeId": "ASSET",
+						"id": "img1",
+						"alignment": "right",
+						"size": "",
+						"caption": {
+							"blocks": [
+								{
+									"key": "c4",
+									"text": " Caption only ",
+									"type": "unstyled",
+									"depth": 0,
+									"inlineStyleRanges": [],
+									"entityRanges": [],
+									"data": {}
+								}
+							],
+							"entityMap": {}
+						},
+						"credit": {
+							"blocks": [
+								{
+									"key": "c5",
+									"text": "",
+									"type": "unstyled",
+									"depth": 0,
+									"inlineStyleRanges": [],
+									"entityRanges": [],
+									"data": {}
+								}
+							],
+							"entityMap": {}
+						}
+					}
+				}
+			}
+		},
+		"caption-plain": {
+			"blocks": [
+				{
+					"key": "cp1",
+					"text": " ",
+					"type": "atomic",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [
+						{
+							"offset": 0,
+							"length": 1,
+							"key": 0
+						}
+					],
+					"data": {}
+				}
+			],
+			"entityMap": {
+				"0": {
+					"type": "image",
+					"mutability": "IMMUTABLE",
+					"data": {
+						"contentTypeId": "ASSET",
+						"id": "img1",
+						"alignment": "center",
+						"caption": {
+							"blocks": [
+								{
+									"key": "p1",
+									"text": "Heading",
+									"type": "header-one",
+									"depth": 0,
+									"inlineStyleRanges": [],
+									"entityRanges": [],
+									"data": {}
+								},
+								{
+									"key": "p2",
+									"text": "Bold, H2O, x2 and small",
+									"type": "unstyled",
+									"depth": 0,
+									"inlineStyleRanges": [
+										{
+											"offset": 0,
+											"length": 4,
+											"style": "BOLD"
+										},
+										{
+											"offset": 7,
+											"length": 1,
+											"style": "SUB"
+										},
+										{
+											"offset": 12,
+											"length": 1,
+											"style": "SUP"
+										},
+										{
+											"offset": 18,
+											"length": 5,
+											"style": "SMALL"
+										},
+										{
+											"offset": 18,
+											"length": 5,
+											"style": "ITALIC"
+										}
+									],
+									"entityRanges": [],
+									"data": {}
+								},
+								{
+									"key": "p3",
+									"text": "A pullquote",
+									"type": "pullquote",
+									"depth": 0,
+									"inlineStyleRanges": [],
+									"entityRanges": [],
+									"data": {}
+								},
+								{
+									"key": "p4",
+									"text": "A blockquote",
+									"type": "blockquote",
+									"depth": 0,
+									"inlineStyleRanges": [],
+									"entityRanges": [],
+									"data": {}
+								},
+								{
+									"key": "p5",
+									"text": " ",
+									"type": "section-break",
+									"depth": 0,
+									"inlineStyleRanges": [],
+									"entityRanges": [],
+									"data": {}
+								},
+								{
+									"key": "p6",
+									"text": "Item",
+									"type": "unordered-list-item",
+									"depth": 0,
+									"inlineStyleRanges": [],
+									"entityRanges": [],
+									"data": {}
+								},
+								{
+									"key": "p7",
+									"text": "a < b",
+									"type": "code-block",
+									"depth": 0,
+									"inlineStyleRanges": [],
+									"entityRanges": [],
+									"data": {
+										"lang": "javascript"
+									}
+								}
+							],
+							"entityMap": {}
+						}
+					}
+				}
+			}
+		},
+		"blocks": {
+			"blocks": [
+				{
+					"key": "bk1",
+					"text": "Quote",
+					"type": "blockquote",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "bk2",
+					"text": "Pull",
+					"type": "pullquote",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "bk3",
+					"text": " ",
+					"type": "section-break",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "bk4",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "bk5",
+					"text": "Custom type",
+					"type": "my-custom-type",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "bk6",
+					"text": " ",
+					"type": "atomic",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [
+						{
+							"offset": 0,
+							"length": 1,
+							"key": 0
+						}
+					],
+					"data": {}
+				},
+				{
+					"key": "bk7",
+					"text": "Embed text",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [
+						{
+							"offset": 6,
+							"length": 4,
+							"key": 1
+						}
+					],
+					"data": {}
+				}
+			],
+			"entityMap": {
+				"0": {
+					"type": "oembed",
+					"mutability": "IMMUTABLE",
+					"data": {
+						"html": "<iframe width=\"480\" height=\"270\" src=\"https://www.youtube.com/embed/abc?feature=oembed\" frameborder=\"0\" allowfullscreen></iframe>"
+					}
+				},
+				"1": {
+					"type": "oembed",
+					"mutability": "IMMUTABLE",
+					"data": {
+						"html": "<iframe src=\"https://example.test/e\"></iframe>"
+					}
+				}
+			}
+		},
+		"one-empty-block": {
+			"blocks": [
+				{
+					"key": "eb1",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {}
+		},
+		"two-empty-blocks": {
+			"blocks": [
+				{
+					"key": "eb2",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				},
+				{
+					"key": "eb3",
+					"text": "",
+					"type": "unstyled",
+					"depth": 0,
+					"inlineStyleRanges": [],
+					"entityRanges": [],
+					"data": {}
+				}
+			],
+			"entityMap": {}
+		}
+	}
+}

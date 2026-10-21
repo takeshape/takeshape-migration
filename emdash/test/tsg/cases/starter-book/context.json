@@ -1,0 +1,83 @@
+{
+  "site": {
+    "settings": {
+      "siteTitle": "Shape Books"
+    },
+    "books": {
+      "total": 5,
+      "items": [
+        {
+          "_contentTypeName": "Book",
+          "_enabledAt": "2020-10-22T20:23:35.709Z",
+          "title": "Peter Pan",
+          "author": {
+            "name": "J. M. Barrie"
+          },
+          "coverImage": {
+            "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/peter_pan.jpeg"
+          }
+        },
+        {
+          "_contentTypeName": "Book",
+          "_enabledAt": "2020-10-22T20:23:35.709Z",
+          "title": "Treasure Island",
+          "author": {
+            "name": "Robert Louis Stevenson"
+          },
+          "coverImage": {
+            "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/treasure_island.jpg"
+          }
+        },
+        {
+          "_contentTypeName": "Book",
+          "_enabledAt": "2020-10-22T20:23:35.709Z",
+          "title": "Kidnapped",
+          "author": {
+            "name": "Robert Louis Stevenson"
+          },
+          "coverImage": {
+            "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/kidnapped.jpg"
+          }
+        },
+        {
+          "_contentTypeName": "Book",
+          "_enabledAt": "2020-10-22T20:23:35.709Z",
+          "title": "The Strange Case of Dr Jekyll & Mr Hyde",
+          "author": {
+            "name": "Robert Louis Stevenson"
+          },
+          "coverImage": {
+            "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/jekyll.jpg"
+          }
+        },
+        {
+          "_contentTypeName": "Book",
+          "_enabledAt": "2020-10-22T20:23:35.709Z",
+          "title": "Peter and Wendy",
+          "author": {
+            "name": "J. M. Barrie"
+          },
+          "coverImage": {
+            "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/wendy.jpg"
+          }
+        }
+      ]
+    }
+  },
+  "book": {
+    "title": "Peter Pan",
+    "totalPages": 207,
+    "type": "paperback",
+    "publishDate": "1901-08-17T19:18:59.885Z",
+    "genre": {
+      "title": "Fantasy"
+    },
+    "author": {
+      "name": "J. M. Barrie"
+    },
+    "coverImage": {
+      "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/peter_pan.jpeg"
+    },
+    "bodyHtml": "<p>Peter Pan is a <a href=\"https://en.wikipedia.org/wiki/Peter_and_Wendy\" target=\"_blank\">novel</a> by J. M. Barrie &amp; friends.</p><figure><img src=\"/_emdash/api/media/file/caption.jpg\" alt=\"Die Insel\"><figcaption>Grüße von der Insel „Nimmerland“</figcaption></figure>"
+  }
+}

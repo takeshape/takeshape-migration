@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<body>
+{# A name set before a loop and again inside it for the partial the loop includes #}
+{% set variant = "nav" %}
+<p class="{{ variant }}">nav</p>
+{% for s in items %}
+  {% if loop.index <= 2 %}
+    {% set variant = "card" %}
+    {% set title = s %}
+    {% include "card.html" %}
+  {% endif %}
+{% endfor %}
+{# The same inside another loop, as a page's stories can sit inside its sections #}
+{% for group in groups %}<section>{% for s in group.items %}{% set variant = "inner" %}{% set title = s %}{% include "card.html" %}{% endfor %}</section>{% endfor %}
+</body>
+</html>

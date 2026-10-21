@@ -1,0 +1,23 @@
+node_modules/
+**/test/.out/
+*.db
+uploads/
+.DS_Store
+
+# IntelliJ / JetBrains: project files are per machine (SDK, module type)
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+**/test/.cache/
+
+# compare-sites default outputs
+compare-report.md
+compare-report.json
+
+# The cf CLI's account cache
+.cloudflare/
+
+# Claude Code settings for this machine only: secrets such as CLOUDFLARE_API_TOKEN go here, never in settings.json
+.claude/settings.local.json

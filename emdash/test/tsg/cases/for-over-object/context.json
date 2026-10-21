@@ -1,0 +1,1 @@
+{"banner": {"heading": "Join", "url": "/join/"}, "arrayLike": {"length": 2, "0": "first", "1": "second"}, "word": "abc", "stringLength": {"length": "2", "0": "first", "1": "second"}, "fractionLength": {"length": 1.5, "0": "a", "1": "b"}, "trueLength": {"length": true, "0": "t"}, "wordLength": {"length": "abc", "0": "x"}, "zeroStringLength": {"length": "0"}}

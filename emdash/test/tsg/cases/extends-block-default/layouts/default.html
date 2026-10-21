@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head>
+  <title>{% block title %}{{ site.settings.siteTitle }}{% if page.title %} - {{ page.title }}{% endif %}{% endblock %}</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/stylesheets/base.css"/>
+</head>
+
+<body>
+<div class="main">
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+name: emdash tests
+
+on:
+  push:
+    branches: [main]
+    paths: ["emdash/**", ".github/workflows/emdash-test.yml"]
+  pull_request:
+    paths: ["emdash/**", ".github/workflows/emdash-test.yml"]
+
+jobs:
+  test:
+    name: test (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        # 22.18.0 is the minimum (first 22.x that runs TypeScript directly); 26 matches .nvmrc
+        node: ["22.18.0", "26"]
+    defaults:
+      run:
+        working-directory: emdash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: emdash/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      # Converts every fixture and imports it into a fresh EmDash database
+      - run: npm test
+
+  # The site translator's tests build generated Astro projects, which need Node 22.22 or later, so they run on 26 only
+  tsg-templates:
+    name: tsg2astro templates (Node 26)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: emdash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "26"
+          cache: npm
+          # Its own cache key, so the saved npm cache also holds the Astro test project's packages
+          cache-dependency-path: |
+            emdash/package-lock.json
+            emdash/test/tsg/astro-cases/package-lock.json
+      - run: npm ci
+      # Renders every case in test/tsg/cases/ with Nunjucks 3.2.0 and with the emitted Astro components, then compares
+      - run: npm run test:tsg-templates
+
+  tsg-e2e:
+    name: tsg2astro e2e, shape-books (Node 26)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: emdash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "26"
+          cache: npm
+          # scaffold.mts pins the generated project's packages. That project has no lockfile, so only npm's download
+          # cache is kept: its node_modules is installed fresh each run, as a customer's would be
+          cache-dependency-path: |
+            emdash/package-lock.json
+            emdash/tsg2astro/scaffold.mts
+      - run: npm ci
+      # Migrates TakeShape's books starter from its committed export and assets (a request to any TakeShape host fails
+      # the run), builds it for Node and compares the result with the golden build
+      - run: npm run test:tsg-e2e -- shape-books
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tsg-e2e-shape-books
+          path: emdash/test/.out/tsg-e2e-shape-books*
+          # test/.out starts with a dot, and v4 leaves out hidden paths by default
+          include-hidden-files: true
+          retention-days: 7
+
+  # The same migration, then the Workers path: the content moves by site transfer into local D1 and R2 under
+  # astro dev on workerd, and the Workers build is compared under astro preview. Everything runs locally, with no
+  # Cloudflare account; workerd's binary comes with the generated project's wrangler install
+  tsg-e2e-cloudflare:
+    name: tsg2astro e2e, shape-books --cloudflare (Node 26)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: emdash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "26"
+          cache: npm
+          # As in tsg-e2e: only npm's download cache is kept, and the generated project installs fresh each run
+          cache-dependency-path: |
+            emdash/package-lock.json
+            emdash/tsg2astro/scaffold.mts
+      - run: npm ci
+      # Node mode first (its differences don't stop the run), then site export, import into local D1 and R2,
+      # npm run build and a compare against astro preview
+      - run: npm run test:tsg-e2e -- shape-books --cloudflare
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tsg-e2e-shape-books-cloudflare
+          path: emdash/test/.out/tsg-e2e-shape-books*
+          include-hidden-files: true
+          retention-days: 7

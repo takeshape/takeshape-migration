@@ -1,0 +1,106 @@
+{
+  "site": {
+    "settings": {
+      "siteTitle": "Shape Books"
+    },
+    "books": {
+      "total": 5,
+      "items": [
+        {
+          "_contentTypeName": "Book",
+          "_enabledAt": "2020-10-22T20:23:35.709Z",
+          "title": "Peter Pan",
+          "author": {
+            "name": "J. M. Barrie"
+          },
+          "coverImage": {
+            "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/peter_pan.jpeg"
+          }
+        },
+        {
+          "_contentTypeName": "Book",
+          "_enabledAt": "2020-10-22T20:23:35.709Z",
+          "title": "Treasure Island",
+          "author": {
+            "name": "Robert Louis Stevenson"
+          },
+          "coverImage": {
+            "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/treasure_island.jpg"
+          }
+        },
+        {
+          "_contentTypeName": "Book",
+          "_enabledAt": "2020-10-22T20:23:35.709Z",
+          "title": "Kidnapped",
+          "author": {
+            "name": "Robert Louis Stevenson"
+          },
+          "coverImage": {
+            "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/kidnapped.jpg"
+          }
+        },
+        {
+          "_contentTypeName": "Book",
+          "_enabledAt": "2020-10-22T20:23:35.709Z",
+          "title": "The Strange Case of Dr Jekyll & Mr Hyde",
+          "author": {
+            "name": "Robert Louis Stevenson"
+          },
+          "coverImage": {
+            "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/jekyll.jpg"
+          }
+        },
+        {
+          "_contentTypeName": "Book",
+          "_enabledAt": "2020-10-22T20:23:35.709Z",
+          "title": "Peter and Wendy",
+          "author": {
+            "name": "J. M. Barrie"
+          },
+          "coverImage": {
+            "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/wendy.jpg"
+          }
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "title": "Reinventing Peter Pan ",
+      "_enabledAt": "2020-10-22T20:23:35.700Z",
+      "deck": "A fresh look at the boy who would not grow up.",
+      "featureImage": {
+        "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/peter_pan_post.jpg"
+      },
+      "author": {
+        "name": "J. M. Barrie"
+      }
+    },
+    {
+      "title": "Jump aboard the new Treasure Island's edition",
+      "_enabledAt": "2020-10-23T04:30:00.000Z",
+      "deck": "Pirates, maps & \"treasure\".",
+      "featureImage": {
+        "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/treasure.jpg"
+      },
+      "author": {
+        "name": "Robert Louis Stevenson"
+      }
+    },
+    {
+      "title": "Grüße aus Edinburgh",
+      "_enabledAt": "2020-11-01T12:00:00.000Z",
+      "deck": "Stevenson's city, „wunderschön“.",
+      "featureImage": {
+        "path": "00000006-0000-4000-8000-000000000006/dev/00a00031-0000-4000-8000-000000a00031/edinburgh.jpg"
+      },
+      "author": {
+        "name": "Robert Louis Stevenson"
+      }
+    }
+  ],
+  "pagination": {
+    "currentPage": 3,
+    "totalPages": 3
+  }
+}

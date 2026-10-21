@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+<body>
+{# A macro's result is a SafeString: replace works on it and keeps it safe, so its markup prints as markup #}
+{% macro badge(t) %}<b class="badge">{{ t }}</b>{% endmacro %}
+<p>{{ badge(word) | replace("x", "X") }}</p>
+<p>{{ badge("none") | replace("q", "Q") }}</p>
+<p>{{ badge("ab") | replace("", ".") }}</p>
+<p>{{ badge("a-b-c") | replace("-", "+", 1) }}</p>
+</body>
+</html>

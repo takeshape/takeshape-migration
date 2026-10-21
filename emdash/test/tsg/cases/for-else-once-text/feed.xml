@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+{% set j = joiner(",") %}
+<items>{% for x in [j(), j()] %}[{{ x }}]{% else %}none{% endfor %}</items>
+<none>{% for x in empty %}{{ x }}{% else %}nothing here{% endfor %}</none>

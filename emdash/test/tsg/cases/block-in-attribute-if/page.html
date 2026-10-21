@@ -1,0 +1,5 @@
+{% extends "layout.html" %}
+{# A category page: the body class depends on a set at the top level #}
+{% set isChild = page.parents.length > 0 %}
+{% block body_class %}{% if isChild %}body--child{% elif page.kind %}body--{{ page.kind }}{% else %}body--category{% endif %} x{% endblock %}
+{% block content %}<main>Page</main>{% endblock %}

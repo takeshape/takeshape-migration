@@ -1,0 +1,12 @@
+{# Shaped like a site's image macro: a joiner, attributes set inside the start tag, a loop in an attribute #}
+{% macro card(title, tags, url, class, note="default note") %}
+  {% set comma = joiner() %}
+  <a href="{{ url }}"{% if class %} class="{{ class }} is-card"{% endif %}
+     {% if tags %}data-tags="{% for t in tags %}{{ comma() }} {{ t }}{% endfor %}"{% endif %}>{{ title }}</a>
+  <em>{{ note }}</em>
+  <i>[{{ outside }}]</i>
+{% endmacro %}
+
+{% macro badge(label) %}<b>{{ label | upper }} &amp; {{ "<x>" }}</b>{% endmacro %}
+
+{% macro wrapped(title) %}<div class="wrap">{{ badge(title) }}</div>{% endmacro %}

@@ -1,0 +1,9 @@
+{
+  "prompts": [
+    { "text": "one", "destination": { "hero": { "background": "d1.jpg" } } },
+    { "text": "two" },
+    { "text": "three", "background": "own.jpg" },
+    { "text": "four" }
+  ],
+  "first": [{ "text": "none" }, { "text": "has", "background": "b.jpg" }]
+}

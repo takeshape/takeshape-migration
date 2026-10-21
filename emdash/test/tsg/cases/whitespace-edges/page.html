@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head><title>{{ title }} < {{ "<b>" }} {braces}</title></head>
+<body>
+<p>[{% include "name.html" %}], more</p>
+<p>Hello {% include "bold.html" %}world</p>
+<p>{% include "name.html" %}</p>
+<pre>
+first line
+{% set z = 3 %}
+line {{ z }}
+    indented {{ title }}
+</pre>
+<textarea name="t">{ raw } < {{ title }}</textarea>
+<p>{% if a %} spaced {% endif %}|{% if b %}x{% elif a %} elif {% else %}else{% endif %}|</p>
+</body>
+</html>

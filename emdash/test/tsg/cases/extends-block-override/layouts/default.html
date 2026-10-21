@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+  <title>{% block title %}{{ site.settings.siteTitle }}{% if page.title %} - {{ page.title }}{% endif %}{% endblock %}</title>
+</head>
+<body class="{{ bodyClass }}">
+{% include "partials/nav.html" %}
+<div class="main">
+  {% block content %}<p>No content.</p>{% endblock %}
+</div>
+<footer>{% block footer %}Default footer for {{ section }}{% endblock %}</footer>
+</body>
+</html>

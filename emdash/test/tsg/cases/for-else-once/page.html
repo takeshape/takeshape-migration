@@ -1,0 +1,6 @@
+{# A loop with an else evaluates its list once: each joiner call here gives the next separator. #}
+{% set j = joiner(",") %}
+<p>{% for x in [j(), j()] %}[{{ x }}]{% else %}none{% endfor %}</p>
+{% set k = joiner("-") %}
+<span title="{% for x in [k(), k()] %}{{ x }};{% else %}none{% endfor %}">t</span>
+<p>{% for x in empty %}{{ x }}{% else %}nothing here{% endfor %}</p>

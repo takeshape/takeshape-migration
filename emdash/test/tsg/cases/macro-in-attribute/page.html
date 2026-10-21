@@ -1,0 +1,10 @@
+<!doctype html>
+<html>
+<body>
+{# A macro's result is a SafeString: Nunjucks printed it in an attribute as it was, escaped once inside the macro #}
+{% macro label(x) %}{{ x }}{% endmacro %}
+<p title="{{ label(word) }}">direct</p>
+<p title="{% for x in items %}{{ label(x) }};{% endfor %}">loop</p>
+<p data-x="{% if word %}{{ label(word) }}{% endif %}">if</p>
+</body>
+</html>

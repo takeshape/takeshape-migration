@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<body>
+<a href="/books/{{ slug }}/" class="btn {% if active %}is-active{% endif %}" title="{{ a }} and {{ b }}">Book</a>
+<a class="{% if kind == 'x' %}kx{% elif kind == 'y' %}ky{% else %}kz{% endif %}" data-kind="{{ kind }}">kind</a>
+<div data-n={{ n }} id=static-id>unquoted</div>
+<ul>
+  <li><a {% if pagination.currentPage== 1 %}class="is-disabled"
+         {% else %}href="{% if previousPage == 1 %}{{ first }}{% else %}{{ previousPage | route('posts.paginate') }}{% endif %}"
+      {% endif %}><</a></li>
+  <li><a {% if pagination.currentPage== pagination.totalPages %}class="is-current"
+         {% else %}href="{{ pagination.totalPages | route('posts.paginate') }}" {% endif %}>{{ pagination.totalPages }}</a>
+  </li>
+  <li><a {% if pagination.currentPage== pagination.totalPages %}class="is-disabled"
+         {% else %}href="{{ (pagination.currentPage + 1) | route('posts.paginate') }}" {% endif %}>></a>
+  </li>
+</ul>
+<form>
+  <input type="checkbox" name="c1" {% if checked %}checked{% endif %} {% if not checked %}disabled{% endif %}>
+  <select name="s"><option value="{{ value }}" {% if selected %}selected="selected"{% endif %}>opt</option></select>
+  <input type="text" name="t" value="{{ value }}" placeholder='{{ a }}'>
+</form>
+<img src="{{ cover | image }}" alt="">
+<p style="background-image: url('{{ cover | image }}');">styled</p>
+</body>
+</html>

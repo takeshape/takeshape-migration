@@ -1,0 +1,6 @@
+{
+  "data": { "title": "Page title", "tout": { "image": "tout.png" }, "note": "Data note" },
+  "size": "small",
+  "showBox": true,
+  "items": [{ "name": "Only a name" }]
+}

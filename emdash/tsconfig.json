@@ -1,0 +1,19 @@
+{
+  // Node runs these files directly (type stripping, Node 22.18+), so tsc only checks them.
+  "compilerOptions": {
+    "target": "es2023",
+    "lib": ["es2023"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["node"],
+    "strict": true,
+    "noEmit": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": true
+  },
+  "include": ["ts2emdash.mts", "tsg2astro/**/*.ts", "tsg2astro/**/*.mts", "compare/**/*.mts", "test/**/*.mts", "types/**/*.d.ts"],
+  // The generated project's own files, which its Astro and wrangler types check
+  "exclude": ["tsg2astro/scaffold"]
+}

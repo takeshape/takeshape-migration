@@ -1,0 +1,16 @@
+{
+  "homepage": { "_updatedAt": "2020-10-22T20:23:35.710Z" },
+  "posts": {
+    "items": [
+      { "title": "Reinventing Peter Pan ", "_updatedAt": "2020-10-22T20:23:35.700Z" },
+      { "title": "Jump aboard the new Treasure Island's edition", "_updatedAt": "2020-10-23T08:00:00.000Z" }
+    ]
+  },
+  "books": {
+    "items": [
+      { "title": "Peter Pan", "_updatedAt": "2020-10-22T20:23:35.709Z" },
+      { "title": "Tom & Jerry <Annotated>", "_updatedAt": "2020-10-22T20:23:35.709Z" }
+    ]
+  },
+  "authors": { "items": [{ "name": "J. M. Barrie", "_updatedAt": "2020-10-22T20:23:35.709Z" }] }
+}

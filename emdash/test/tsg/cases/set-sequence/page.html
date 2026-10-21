@@ -1,0 +1,22 @@
+{# A name set again further down: each read and include sees the value set last before it, as Nunjucks ran them #}
+<!doctype html>
+<html>
+<body>
+<p>{{ label }}</p>
+{% set label = "first" %}
+{% include "part.html" %}
+{% set label = "second" %}
+{% include "part.html" %}
+<p>{{ label }}</p>
+{% set count = 1 %}
+{% set count = count + 1 %}
+<p>{{ count }}</p>
+{% if flag %}{% set mood = "happy" %}{% else %}{% set mood = "sad" %}{% endif %}
+<p>{{ mood }}</p>
+{% if other %}{% set mood = "other" %}{% endif %}
+<p>{{ mood }}</p>
+{% if flag %}{% if other %}{% set mood = "nested" %}{% endif %}{% endif %}
+<p>{{ mood }}</p>
+{% for i in [1, 2] %}<i>{{ label }}{{ i }}</i>{% endfor %}
+</body>
+</html>

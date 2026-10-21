@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+{% if site.url %}{% set base = site.url %}{% else %}{% set base = "https://example.com" %}{% endif %}
+{% if lang == "fr" %}{% set label = "Nouvelles" %}{% elif lang == "de" %}{% set label = "Neues" %}{% endif %}
+<feed base="{{ base }}" label="{{ label }}">
+{% for post in posts %}
+  {% if post.summary %}{% set summary = post.summary %}{% else %}{% set summary = post.title ~ "..." %}{% endif %}
+  <entry>{{ summary }}</entry>
+{% endfor %}
+{% if showFooter %}
+  {% if lang == "fr" %}{% set footer = "Fin" %}{% else %}{% set footer = "End" %}{% endif %}
+  <footer>{{ footer }}</footer>
+{% endif %}
+</feed>

@@ -1,0 +1,10 @@
+{
+  "site": { "name": "Shape & Books" },
+  "level": 2,
+  "selected": "selected",
+  "html": "Tom &amp; Jerry",
+  "flag": true,
+  "size": 24,
+  "color": "#fff",
+  "items": ["one", "two & three"]
+}

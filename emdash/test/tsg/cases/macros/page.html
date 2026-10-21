@@ -1,0 +1,20 @@
+{% from "macros/card.html" import card, wrapped as wrap %}
+{% import "macros/card.html" as m %}
+<!doctype html>
+<html>
+<body>
+{{ card("First", ["a", "b"], "/one/", class="big", note="given") }}
+{{ card("Second", ["c"], "/two/") }}
+{{ card(title="Keywords", url="/kw/", fetchpriority="high", tags=["x", "y", "z"]) }}
+{{ card("Mixed", url="/mixed/", ["p"]) }}
+{% for item in items %}{{ card(item.title, item.tags, "/loop/") }}{% endfor %}
+<p>{{ wrap("Wrapped") }}</p>
+<p>{{ m.badge("namespace") }}</p>
+<p>[{{ outside }}]</p>
+{# A macro's result through filters: upper gives plain text, trim, title and striptags keep it safe (copySafeness) #}
+<p>{{ m.badge("x") | upper }}</p>
+<p>{{ m.badge(" y ") | trim }}</p>
+<p>{{ m.badge("t") | title }}</p>
+<p>{{ m.badge("s") | striptags }}</p>
+</body>
+</html>

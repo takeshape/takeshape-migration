@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<body>
+{# A page that loops over a single reference: one name over an object runs to its length #}
+<ul>{% for item in banner %}<li class="banner">{{ item }}</li>{% else %}<li>none</li>{% endfor %}</ul>
+<ul>{% for item in arrayLike %}<li>{{ item }} {{ loop.index }}</li>{% endfor %}</ul>
+{# Nunjucks loops while i < length, so < coerces it: "2" runs twice, 1.5 twice, true once, "abc" never. The else runs
+   only for a falsy length, so "abc" and "0" print neither. #}
+<ul>{% for item in stringLength %}<li>{{ item }} {{ loop.index }} {{ loop.revindex }} {{ loop.last }} {{ loop.length }}</li>{% endfor %}</ul>
+<ul>{% for item in fractionLength %}<li>{{ item }} {{ loop.revindex }} {{ loop.last }}</li>{% endfor %}</ul>
+<ul>{% for item in trueLength %}<li>{{ item }}</li>{% endfor %}</ul>
+<ul>{% for item in wordLength %}<li>{{ item }}</li>{% else %}<li>none</li>{% endfor %}</ul>
+<ul>{% for item in zeroStringLength %}<li>{{ item }}</li>{% else %}<li>none</li>{% endfor %}</ul>
+<ul>{% for c in word %}<li>{{ c }}</li>{% endfor %}</ul>
+</body>
+</html>

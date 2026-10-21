@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<body>
+{# An if with no else inside a loop: where no branch runs, the last run's value stays #}
+<ul>
+{% for prompt in prompts %}
+  {% if prompt.background %}
+    {% set promptBackground = prompt.background %}
+  {% elif prompt.destination.hero.background %}
+    {% set promptBackground = prompt.destination.hero.background %}
+  {% endif %}
+  <li data-bg="{{ promptBackground }}">{{ prompt.text }}</li>
+{% endfor %}
+</ul>
+<ul>
+{% for p in first %}
+  {% if p.background %}{% set bg = p.background %}{% endif %}
+  <li data-bg="{{ bg }}">{{ p.text }} {{ loop.index }}</li>
+{% endfor %}
+</ul>
+{# A loop variable named like the scan's own accumulator #}
+<ul>{% for runs in first %}{% if runs.background %}{% set bgr = runs.background %}{% endif %}<li data-bg="{{ bgr }}">{{ runs.text }}</li>{% endfor %}</ul>
+</body>
+</html>

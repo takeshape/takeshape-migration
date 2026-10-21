@@ -1,0 +1,9 @@
+{
+  "title": "Fish & Chips \"special\"",
+  "description": "It's <great> & \"fun\"",
+  "text": "Fish & Chips <b>\"bold\"</b> it's",
+  "caption": "Grüße aus München: „Schön“ & <klein>",
+  "image": { "path": "00000006/dev/00a00031/peter pan's café.jpeg" },
+  "query": "café & crème",
+  "html": "<em>café &amp; crème</em> <a href=\"/x?a=1&amp;b=2\">link</a>"
+}

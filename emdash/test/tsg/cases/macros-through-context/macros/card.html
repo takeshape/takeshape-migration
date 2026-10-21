@@ -1,0 +1,1 @@
+{% macro card(title, tags, url, class) %}<a href="{{ url }}"{% if class %} class="{{ class }}"{% endif %}>{{ title }}{% for t in tags %} #{{ t }}{% endfor %}</a>{% endmacro %}

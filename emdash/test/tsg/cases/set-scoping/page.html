@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<body>
+{% set label = "Books" %}
+<h1>{{ label }}</h1>
+<ul>
+{% for book in books %}
+  {% set line = book.title ~ " (" ~ loop.index ~ ")" %}
+  <li>{{ line }}</li>
+  {% include "item.html" %}
+{% endfor %}
+</ul>
+<p>After the loop: [{{ line }}]</p>
+<ol>{% for book in books %}{% set line = "again " ~ book.title %}<li>{{ line }}</li>{% endfor %}</ol>
+<div>
+{% if showNote %}
+  <p>Before: [{{ note }}]</p>
+  {% set note = "Note for " ~ label %}
+  <p>{{ note }}</p>
+  {% include "note.html" %}
+{% endif %}
+</div>
+</body>
+</html>

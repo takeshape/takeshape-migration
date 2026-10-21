@@ -1,0 +1,1134 @@
+{
+  "$schema": "https://schema.takeshape.io/project-schema",
+  "workflows": {},
+  "defaultLocale": "en",
+  "locales": [
+    "en"
+  ],
+  "apiVersion": "1",
+  "forms": {
+    "Genre": {
+      "default": {
+        "properties": {
+          "title": {
+            "widget": "singleLineText"
+          }
+        },
+        "order": [
+          "title"
+        ]
+      }
+    },
+    "Tag": {
+      "default": {
+        "properties": {
+          "name": {
+            "widget": "singleLineText"
+          }
+        },
+        "order": [
+          "name"
+        ]
+      }
+    },
+    "Post": {
+      "default": {
+        "properties": {
+          "body": {
+            "widget": "wysiwygText"
+          },
+          "featureImage": {
+            "widget": "image"
+          },
+          "title": {
+            "widget": "singleLineText"
+          },
+          "author": {
+            "widget": "relationship"
+          },
+          "deck": {
+            "widget": "paragraphText"
+          },
+          "tags": {
+            "widget": "relationship"
+          }
+        },
+        "order": [
+          "title",
+          "deck",
+          "tags",
+          "author",
+          "featureImage",
+          "body"
+        ]
+      }
+    },
+    "Author": {
+      "default": {
+        "properties": {
+          "name": {
+            "widget": "singleLineText"
+          },
+          "photo": {
+            "widget": "image"
+          },
+          "biography": {
+            "widget": "wysiwygText"
+          }
+        },
+        "order": [
+          "name",
+          "photo",
+          "biography"
+        ]
+      }
+    },
+    "HomepageHero": {
+      "default": {
+        "properties": {
+          "image": {
+            "widget": "image"
+          },
+          "featuredPost": {
+            "widget": "relationship"
+          }
+        },
+        "widget": "object",
+        "order": [
+          "image",
+          "featuredPost"
+        ]
+      }
+    },
+    "Homepage": {
+      "default": {
+        "properties": {
+          "title": {
+            "widget": "singleLineText"
+          },
+          "featuredBook": {
+            "widget": "relationship"
+          },
+          "hero": {
+            "widget": "shapeObject"
+          }
+        },
+        "order": [
+          "title",
+          "hero",
+          "featuredBook"
+        ]
+      }
+    },
+    "SiteSettings": {
+      "default": {
+        "properties": {
+          "siteTitle": {
+            "widget": "singleLineText"
+          }
+        },
+        "order": [
+          "siteTitle"
+        ]
+      }
+    },
+    "Asset": {
+      "default": {
+        "properties": {
+          "path": {
+            "disabled": true,
+            "widget": "singleLineText"
+          },
+          "filename": {
+            "disabled": true,
+            "widget": "singleLineText"
+          },
+          "description": {
+            "disabled": true,
+            "widget": "paragraphText"
+          },
+          "caption": {
+            "disabled": true,
+            "widget": "wysiwygSingleLineText"
+          },
+          "uploadStatus": {
+            "disabled": true,
+            "widget": "singleLineText"
+          },
+          "mimeType": {
+            "disabled": true,
+            "widget": "singleLineText"
+          },
+          "title": {
+            "disabled": true,
+            "widget": "singleLineText"
+          },
+          "authorTag": {
+            "widget": "relationship"
+          },
+          "credit": {
+            "disabled": true,
+            "widget": "wysiwygSingleLineText"
+          }
+        },
+        "order": [
+          "title",
+          "authorTag",
+          "description",
+          "caption",
+          "credit",
+          "filename",
+          "path",
+          "mimeType",
+          "uploadStatus"
+        ]
+      }
+    },
+    "Book": {
+      "default": {
+        "properties": {
+          "author": {
+            "widget": "relationship"
+          },
+          "coverImage": {
+            "widget": "image"
+          },
+          "genre": {
+            "widget": "relationship"
+          },
+          "publishDate": {
+            "widget": "datetime"
+          },
+          "totalPages": {
+            "widget": "number"
+          },
+          "title": {
+            "widget": "singleLineText"
+          },
+          "type": {
+            "widget": "dropdown"
+          },
+          "body": {
+            "widget": "wysiwygText"
+          }
+        },
+        "order": [
+          "title",
+          "genre",
+          "publishDate",
+          "coverImage",
+          "author",
+          "totalPages",
+          "type",
+          "body"
+        ]
+      }
+    }
+  },
+  "queries": {
+    "getGenre": {
+      "args": "TSGetArgs<Genre>",
+      "resolver": {
+        "name": "shapedb:get",
+        "service": "shapedb",
+        "shapeName": "Genre"
+      },
+      "shape": "Genre",
+      "description": "Get a Genre by ID"
+    },
+    "getGenreList": {
+      "args": "TSListArgs<Genre>",
+      "resolver": {
+        "name": "shapedb:list",
+        "service": "shapedb",
+        "shapeName": "Genre"
+      },
+      "shape": "PaginatedList<Genre>",
+      "description": "Returns a list Genre in natural order."
+    },
+    "getTag": {
+      "args": "TSGetArgs<Tag>",
+      "resolver": {
+        "name": "shapedb:get",
+        "service": "shapedb",
+        "shapeName": "Tag"
+      },
+      "shape": "Tag",
+      "description": "Get a Tag by ID"
+    },
+    "getTagList": {
+      "args": "TSListArgs<Tag>",
+      "resolver": {
+        "name": "shapedb:list",
+        "service": "shapedb",
+        "shapeName": "Tag"
+      },
+      "shape": "PaginatedList<Tag>",
+      "description": "Returns a list Tag in natural order."
+    },
+    "getPost": {
+      "args": "TSGetArgs<Post>",
+      "resolver": {
+        "name": "shapedb:get",
+        "service": "shapedb",
+        "shapeName": "Post"
+      },
+      "shape": "Post",
+      "description": "Get a Post by ID"
+    },
+    "getPostList": {
+      "args": "TSListArgs<Post>",
+      "resolver": {
+        "name": "shapedb:list",
+        "service": "shapedb",
+        "shapeName": "Post"
+      },
+      "shape": "PaginatedList<Post>",
+      "description": "Returns a list Post in natural order."
+    },
+    "getAuthor": {
+      "args": "TSGetArgs<Author>",
+      "resolver": {
+        "name": "shapedb:get",
+        "service": "shapedb",
+        "shapeName": "Author"
+      },
+      "shape": "Author",
+      "description": "Get a Author by ID"
+    },
+    "getAuthorList": {
+      "args": "TSListArgs<Author>",
+      "resolver": {
+        "name": "shapedb:list",
+        "service": "shapedb",
+        "shapeName": "Author"
+      },
+      "shape": "PaginatedList<Author>",
+      "description": "Returns a list Author in natural order."
+    },
+    "getHomepage": {
+      "args": "TSGetSingletonArgs<Homepage>",
+      "resolver": {
+        "name": "shapedb:get",
+        "service": "shapedb",
+        "shapeName": "Homepage"
+      },
+      "shape": "Homepage",
+      "description": "Get a Homepage by ID"
+    },
+    "getSiteSettings": {
+      "args": "TSGetSingletonArgs<SiteSettings>",
+      "resolver": {
+        "name": "shapedb:get",
+        "service": "shapedb",
+        "shapeName": "SiteSettings"
+      },
+      "shape": "SiteSettings",
+      "description": "Get a SiteSettings by ID"
+    },
+    "getAsset": {
+      "args": "TSGetArgs<Asset>",
+      "resolver": {
+        "name": "shapedb:get",
+        "service": "shapedb",
+        "shapeName": "Asset"
+      },
+      "shape": "Asset",
+      "description": "Get a Asset by ID"
+    },
+    "getAssetList": {
+      "args": "TSListArgs<Asset>",
+      "resolver": {
+        "name": "shapedb:list",
+        "service": "shapedb",
+        "shapeName": "Asset"
+      },
+      "shape": "PaginatedList<Asset>",
+      "description": "Returns a list Asset in natural order."
+    },
+    "getBook": {
+      "args": "TSGetArgs<Book>",
+      "resolver": {
+        "name": "shapedb:get",
+        "service": "shapedb",
+        "shapeName": "Book"
+      },
+      "shape": "Book",
+      "description": "Get a Book by ID"
+    },
+    "getBookList": {
+      "args": "TSListArgs<Book>",
+      "resolver": {
+        "name": "shapedb:list",
+        "service": "shapedb",
+        "shapeName": "Book"
+      },
+      "shape": "PaginatedList<Book>",
+      "description": "Returns a list Book in natural order."
+    }
+  },
+  "mutations": {
+    "updateGenre": {
+      "args": "UpdateArgs<Genre>",
+      "resolver": {
+        "name": "shapedb:update",
+        "service": "shapedb",
+        "shapeName": "Genre"
+      },
+      "shape": "UpdateResult<Genre>",
+      "description": "Update Genre"
+    },
+    "createGenre": {
+      "args": "CreateArgs<Genre>",
+      "resolver": {
+        "name": "shapedb:create",
+        "service": "shapedb",
+        "shapeName": "Genre"
+      },
+      "shape": "CreateResult<Genre>",
+      "description": "Create Genre"
+    },
+    "duplicateGenre": {
+      "args": "DuplicateArgs<Genre>",
+      "resolver": {
+        "name": "shapedb:duplicate",
+        "service": "shapedb",
+        "shapeName": "Genre"
+      },
+      "shape": "DuplicateResult<Genre>",
+      "description": "Duplicate Genre"
+    },
+    "deleteGenre": {
+      "args": "DeleteArgs<Genre>",
+      "resolver": {
+        "name": "shapedb:delete",
+        "service": "shapedb",
+        "shapeName": "Genre"
+      },
+      "shape": "DeleteResult<Genre>",
+      "description": "Delete Genre"
+    },
+    "updateTag": {
+      "args": "UpdateArgs<Tag>",
+      "resolver": {
+        "name": "shapedb:update",
+        "service": "shapedb",
+        "shapeName": "Tag"
+      },
+      "shape": "UpdateResult<Tag>",
+      "description": "Update Tag"
+    },
+    "createTag": {
+      "args": "CreateArgs<Tag>",
+      "resolver": {
+        "name": "shapedb:create",
+        "service": "shapedb",
+        "shapeName": "Tag"
+      },
+      "shape": "CreateResult<Tag>",
+      "description": "Create Tag"
+    },
+    "duplicateTag": {
+      "args": "DuplicateArgs<Tag>",
+      "resolver": {
+        "name": "shapedb:duplicate",
+        "service": "shapedb",
+        "shapeName": "Tag"
+      },
+      "shape": "DuplicateResult<Tag>",
+      "description": "Duplicate Tag"
+    },
+    "deleteTag": {
+      "args": "DeleteArgs<Tag>",
+      "resolver": {
+        "name": "shapedb:delete",
+        "service": "shapedb",
+        "shapeName": "Tag"
+      },
+      "shape": "DeleteResult<Tag>",
+      "description": "Delete Tag"
+    },
+    "updatePost": {
+      "args": "UpdateArgs<Post>",
+      "resolver": {
+        "name": "shapedb:update",
+        "service": "shapedb",
+        "shapeName": "Post"
+      },
+      "shape": "UpdateResult<Post>",
+      "description": "Update Post"
+    },
+    "createPost": {
+      "args": "CreateArgs<Post>",
+      "resolver": {
+        "name": "shapedb:create",
+        "service": "shapedb",
+        "shapeName": "Post"
+      },
+      "shape": "CreateResult<Post>",
+      "description": "Create Post"
+    },
+    "duplicatePost": {
+      "args": "DuplicateArgs<Post>",
+      "resolver": {
+        "name": "shapedb:duplicate",
+        "service": "shapedb",
+        "shapeName": "Post"
+      },
+      "shape": "DuplicateResult<Post>",
+      "description": "Duplicate Post"
+    },
+    "deletePost": {
+      "args": "DeleteArgs<Post>",
+      "resolver": {
+        "name": "shapedb:delete",
+        "service": "shapedb",
+        "shapeName": "Post"
+      },
+      "shape": "DeleteResult<Post>",
+      "description": "Delete Post"
+    },
+    "updateAuthor": {
+      "args": "UpdateArgs<Author>",
+      "resolver": {
+        "name": "shapedb:update",
+        "service": "shapedb",
+        "shapeName": "Author"
+      },
+      "shape": "UpdateResult<Author>",
+      "description": "Update Author"
+    },
+    "createAuthor": {
+      "args": "CreateArgs<Author>",
+      "resolver": {
+        "name": "shapedb:create",
+        "service": "shapedb",
+        "shapeName": "Author"
+      },
+      "shape": "CreateResult<Author>",
+      "description": "Create Author"
+    },
+    "duplicateAuthor": {
+      "args": "DuplicateArgs<Author>",
+      "resolver": {
+        "name": "shapedb:duplicate",
+        "service": "shapedb",
+        "shapeName": "Author"
+      },
+      "shape": "DuplicateResult<Author>",
+      "description": "Duplicate Author"
+    },
+    "deleteAuthor": {
+      "args": "DeleteArgs<Author>",
+      "resolver": {
+        "name": "shapedb:delete",
+        "service": "shapedb",
+        "shapeName": "Author"
+      },
+      "shape": "DeleteResult<Author>",
+      "description": "Delete Author"
+    },
+    "updateHomepage": {
+      "args": "UpdateArgs<Homepage>",
+      "resolver": {
+        "name": "shapedb:update",
+        "service": "shapedb",
+        "shapeName": "Homepage"
+      },
+      "shape": "UpdateResult<Homepage>",
+      "description": "Update Homepage"
+    },
+    "updateSiteSettings": {
+      "args": "UpdateArgs<SiteSettings>",
+      "resolver": {
+        "name": "shapedb:update",
+        "service": "shapedb",
+        "shapeName": "SiteSettings"
+      },
+      "shape": "UpdateResult<SiteSettings>",
+      "description": "Update SiteSettings"
+    },
+    "updateAsset": {
+      "args": "UpdateArgs<Asset>",
+      "resolver": {
+        "name": "shapedb:update",
+        "service": "shapedb",
+        "shapeName": "Asset"
+      },
+      "shape": "UpdateResult<Asset>",
+      "description": "Update Asset"
+    },
+    "createAsset": {
+      "args": "CreateArgs<Asset>",
+      "resolver": {
+        "name": "shapedb:create",
+        "service": "shapedb",
+        "shapeName": "Asset"
+      },
+      "shape": "CreateResult<Asset>",
+      "description": "Create Asset"
+    },
+    "duplicateAsset": {
+      "args": "DuplicateArgs<Asset>",
+      "resolver": {
+        "name": "shapedb:duplicate",
+        "service": "shapedb",
+        "shapeName": "Asset"
+      },
+      "shape": "DuplicateResult<Asset>",
+      "description": "Duplicate Asset"
+    },
+    "deleteAsset": {
+      "args": "DeleteArgs<Asset>",
+      "resolver": {
+        "name": "shapedb:delete",
+        "service": "shapedb",
+        "shapeName": "Asset"
+      },
+      "shape": "DeleteResult<Asset>",
+      "description": "Delete Asset"
+    },
+    "updateBook": {
+      "args": "UpdateArgs<Book>",
+      "resolver": {
+        "name": "shapedb:update",
+        "service": "shapedb",
+        "shapeName": "Book"
+      },
+      "shape": "UpdateResult<Book>",
+      "description": "Update Book"
+    },
+    "createBook": {
+      "args": "CreateArgs<Book>",
+      "resolver": {
+        "name": "shapedb:create",
+        "service": "shapedb",
+        "shapeName": "Book"
+      },
+      "shape": "CreateResult<Book>",
+      "description": "Create Book"
+    },
+    "duplicateBook": {
+      "args": "DuplicateArgs<Book>",
+      "resolver": {
+        "name": "shapedb:duplicate",
+        "service": "shapedb",
+        "shapeName": "Book"
+      },
+      "shape": "DuplicateResult<Book>",
+      "description": "Duplicate Book"
+    },
+    "deleteBook": {
+      "args": "DeleteArgs<Book>",
+      "resolver": {
+        "name": "shapedb:delete",
+        "service": "shapedb",
+        "shapeName": "Book"
+      },
+      "shape": "DeleteResult<Book>",
+      "description": "Delete Book"
+    }
+  },
+  "shapes": {
+    "Genre": {
+      "id": "rJ9bZzk-m",
+      "name": "Genre",
+      "title": "Genre",
+      "model": {
+        "type": "taxonomy"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "minLength": 0,
+            "@mapping": "shapedb:Genre.SJgZZzJWm"
+          }
+        }
+      }
+    },
+    "Tag": {
+      "id": "rJBYXVyuQ",
+      "name": "Tag",
+      "title": "Tag",
+      "model": {
+        "type": "taxonomy"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "minLength": 1,
+            "@mapping": "shapedb:Tag.rkZYm41d7"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    "Post": {
+      "id": "rJoobhv8W",
+      "name": "Post",
+      "title": "Post",
+      "model": {
+        "type": "multiple"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "object",
+            "title": "Body",
+            "@mapping": "shapedb:Post.rybsZhDU-",
+            "@tag": "draftjs"
+          },
+          "featureImage": {
+            "title": "Feature Image",
+            "@mapping": "shapedb:Post.BybUznPIW",
+            "@backreference": {
+              "enabled": true
+            },
+            "@ref": "local:Asset",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "minLength": 1,
+            "@mapping": "shapedb:Post.BkJDGhw8W"
+          },
+          "author": {
+            "title": "Author",
+            "@mapping": "shapedb:Post.rJgad7TLZ",
+            "@backreference": {
+              "enabled": true
+            },
+            "@ref": "local:Author",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          },
+          "deck": {
+            "type": "string",
+            "title": "Deck",
+            "minLength": 0,
+            "@mapping": "shapedb:Post.HkJzKRDUb"
+          },
+          "tags": {
+            "title": "Tags",
+            "@mapping": "shapedb:Post.Hkb57EkOQ",
+            "items": {
+              "@ref": "local:Tag"
+            },
+            "@backreference": {
+              "enabled": true
+            },
+            "type": "array",
+            "@input": {
+              "type": "array",
+              "items": {
+                "@ref": "local:TSRelationship"
+              }
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          }
+        },
+        "required": [
+          "title",
+          "featureImage"
+        ]
+      }
+    },
+    "Author": {
+      "id": "SJDIicDUZ",
+      "name": "Author",
+      "title": "Author",
+      "model": {
+        "type": "taxonomy"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "minLength": 1,
+            "@mapping": "shapedb:Author.Hk8NiqwLb"
+          },
+          "photo": {
+            "title": "Photo",
+            "@mapping": "shapedb:Author.BkyFrpUcb",
+            "@backreference": {
+              "enabled": true
+            },
+            "@ref": "local:Asset",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          },
+          "biography": {
+            "type": "object",
+            "title": "Biography",
+            "@mapping": "shapedb:Author.S1tvt0Hq-",
+            "@tag": "draftjs"
+          }
+        },
+        "required": [
+          "name",
+          "photo",
+          "biography"
+        ]
+      }
+    },
+    "Homepage": {
+      "id": "H1TFgJdIb",
+      "name": "Homepage",
+      "title": "Homepage",
+      "model": {
+        "type": "single"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "minLength": 0,
+            "@mapping": "shapedb:Homepage.BJfmu0OIZ"
+          },
+          "featuredBook": {
+            "title": "Featured Book",
+            "@mapping": "shapedb:Homepage.r1xPx1OUW",
+            "@backreference": {
+              "enabled": true
+            },
+            "@ref": "local:Book",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          },
+          "hero": {
+            "title": "Hero",
+            "@mapping": "shapedb:Homepage.ry4VnCD8W",
+            "$ref": "#/shapes/HomepageHero/schema"
+          }
+        }
+      }
+    },
+    "HomepageHero": {
+      "id": "ry4VnCD8W",
+      "name": "HomepageHero",
+      "title": "Homepage Hero",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "image": {
+            "title": "Image",
+            "@mapping": "shapedb:HomepageHero.H1vBnAv8-",
+            "@backreference": {
+              "enabled": true
+            },
+            "@ref": "local:Asset",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          },
+          "featuredPost": {
+            "title": "Featured Post",
+            "@mapping": "shapedb:HomepageHero.SJ1Xo0v8b",
+            "@backreference": {
+              "enabled": true,
+              "name": "heroFeaturedPost"
+            },
+            "@ref": "local:Post",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "SiteSettings": {
+      "id": "Skp0mAuUb",
+      "name": "SiteSettings",
+      "title": "Site Settings",
+      "model": {
+        "type": "single"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "siteTitle": {
+            "type": "string",
+            "title": "Site Title",
+            "minLength": 0,
+            "@mapping": "shapedb:SiteSettings.SkVAQA_8Z"
+          }
+        }
+      }
+    },
+    "Asset": {
+      "id": "ASSET",
+      "name": "Asset",
+      "title": "Asset",
+      "model": {
+        "type": "multiple"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "title": "Path",
+            "minLength": 1,
+            "@mapping": "shapedb:Asset.Hk6FQuz5"
+          },
+          "filename": {
+            "type": "string",
+            "title": "Filename",
+            "minLength": 1,
+            "@mapping": "shapedb:Asset.H1oYQOM9"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "@mapping": "shapedb:Asset.B1Zsra3fx"
+          },
+          "caption": {
+            "type": "object",
+            "title": "Caption",
+            "@mapping": "shapedb:Asset.SyWVsd98x",
+            "@tag": "draftjs"
+          },
+          "uploadStatus": {
+            "type": "string",
+            "title": "Upload status",
+            "@mapping": "shapedb:Asset.ByeAYXdG9"
+          },
+          "mimeType": {
+            "type": "string",
+            "title": "MIME type",
+            "@mapping": "shapedb:Asset.SyCYX_Gq"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "@mapping": "shapedb:Asset.By5tQOMc"
+          },
+          "authorTag": {
+            "title": "Author Tag",
+            "@mapping": "shapedb:Asset.SyQiZrgdX",
+            "@backreference": {
+              "enabled": true
+            },
+            "@ref": "local:Author",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          },
+          "credit": {
+            "type": "object",
+            "title": "Credit",
+            "@mapping": "shapedb:Asset.Skn_i_5Ll",
+            "@tag": "draftjs"
+          }
+        },
+        "required": [
+          "filename",
+          "path"
+        ]
+      }
+    },
+    "Book": {
+      "id": "r166qcP8Z",
+      "name": "Book",
+      "title": "Book",
+      "model": {
+        "type": "multiple"
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "author": {
+            "title": "Author",
+            "@mapping": "shapedb:Book.BJ7Xn5vLW",
+            "@backreference": {
+              "enabled": true,
+              "name": "authored"
+            },
+            "@ref": "local:Author",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          },
+          "coverImage": {
+            "title": "Cover Image",
+            "@mapping": "shapedb:Book.SymsKiD8W",
+            "@backreference": {
+              "enabled": true
+            },
+            "@ref": "local:Asset",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          },
+          "genre": {
+            "title": "Genre",
+            "@mapping": "shapedb:Book.B1E4ZMkW7",
+            "@backreference": {
+              "enabled": true,
+              "name": "books"
+            },
+            "@ref": "local:Genre",
+            "@input": {
+              "@ref": "local:TSRelationship"
+            },
+            "@args": "TSRelationshipArgs",
+            "@resolver": {
+              "name": "shapedb:getRelated",
+              "service": "shapedb",
+              "options": {
+                "nullable": true
+              }
+            }
+          },
+          "publishDate": {
+            "type": "string",
+            "title": "Publish Date",
+            "format": "date-time",
+            "@mapping": "shapedb:Book.BJtYLE5PZ"
+          },
+          "totalPages": {
+            "type": "integer",
+            "title": "Total Pages",
+            "minimum": 1,
+            "@mapping": "shapedb:Book.HkDXBoP8W"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "minLength": 1,
+            "@mapping": "shapedb:Book.B1An5cwLb"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "oneOf": [
+              {
+                "title": "Hardcover",
+                "enum": [
+                  "hardcover"
+                ]
+              },
+              {
+                "title": "Paperback",
+                "enum": [
+                  "paperback"
+                ]
+              }
+            ],
+            "@mapping": "shapedb:Book.BJM2_ovUZ"
+          },
+          "body": {
+            "type": "object",
+            "title": "Body",
+            "@mapping": "shapedb:Book.BJ4ZHov8-",
+            "@tag": "draftjs"
+          }
+        },
+        "required": [
+          "title",
+          "author"
+        ]
+      }
+    }
+  },
+  "schemaVersion": "3.67.0",
+  "services": {}
+}

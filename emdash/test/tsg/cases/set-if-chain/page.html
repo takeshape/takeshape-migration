@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<body>
+{% if data.tout.heading %}{% set heading = data.tout.heading %}{% else %}{% set heading = data.title %}{% endif %}
+<h1>{{ heading }}</h1>
+
+{% if size == "large" %}
+  {% set width = 1200 %}
+{% elif size == "medium" %}
+  {% set width = 800 %}
+{% else %}
+  {% set width = 400 %}
+{% endif %}
+<p>Width {{ width }}</p>
+
+{# Without an else, a name keeps the value it had: the context's, or none. #}
+{% if size == "tiny" %}{% set label = "tiny" %}{% endif %}
+<p>Label [{{ label }}]</p>
+{% if size == "tiny" %}{% set unknown = "tiny" %}{% endif %}
+<p>Unknown [{{ unknown }}]</p>
+
+{# A branch without a set keeps it too. #}
+{% if size == "small" %}
+  {% set tone = "quiet" %}
+{% elif size == "large" %}
+  <p>No tone set here.</p>
+{% else %}
+  {% set tone = "plain" %}
+{% endif %}
+<p>Tone [{{ tone }}]</p>
+
+{% if data.tout %}
+  {% if data.tout.image %}
+    {% set image = data.tout.image %}
+  {% else %}
+    {% set image = "tout-default.png" %}
+  {% endif %}
+{% elif data.hero %}
+  {% set image = data.hero.background %}
+{% else %}
+  {% set image = "default.png" %}
+{% endif %}
+<img src="/{{ image }}" alt="{{ heading }}">
+
+{% if data.hero.heading %}
+  {% set pageHeading = data.hero.heading %}
+  {% set heroText = pageHeading ~ " (hero)" %}
+{% else %}
+  {% set pageHeading = data.title %}
+  {% set heroText = false %}
+{% endif %}
+<h2>{{ pageHeading }}</h2>{% if heroText %}<p>{{ heroText }}</p>{% endif %}
+
+{% if data.subtitle %}{% set subtitle = data.subtitle %}<h3>{{ subtitle }}</h3>{% else %}{% set subtitle = "none" %}{% endif %}
+<p>Subtitle {{ subtitle }}</p>
+
+{% if showBox %}
+  {% if size == "large" %}{% set box = "wide" %}{% else %}{% set box = "narrow" %}{% endif %}
+  <div class="{{ box }}">Box</div>
+{% endif %}
+
+<ul>
+{% for item in items %}
+  {% if item.title %}{% set itemTitle = item.title %}{% elif item.name %}{% set itemTitle = item.name %}{% else %}{% set itemTitle = "Item " ~ loop.index %}{% endif %}
+  <li>{{ itemTitle }}</li>
+{% endfor %}
+</ul>
+{% include "item.html" %}
+
+{# A read before the chain sees the old value. #}
+<p>Before [{{ note }}]</p>
+{% if data.note %}{% set note = data.note %}{% else %}{% set note = "no note" %}{% endif %}
+<p>After [{{ note }}]</p>
+</body>
+</html>

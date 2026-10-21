@@ -1,0 +1,1 @@
+<li data-i="{{ loop.index }}">{{ node.title }}{% if node.children %}<ul>{% for node in node.children %}{% include "node.html" %}{% endfor %}</ul>{% endif %}</li>
