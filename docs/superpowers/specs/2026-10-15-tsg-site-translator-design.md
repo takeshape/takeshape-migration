@@ -4,7 +4,7 @@ Status: design, not built. Written 2026-10-15 against EmDash 1.2.0, EmDash's Clo
 
 ## Why
 
-Customers who built their site with takeshape-ssg lose more than content on December 31, 2026. TakeShape builds and deploys those sites on its own servers, and every page's data comes from TakeShape's GraphQL API. `ts2emdash.mts` moves the content into EmDash, but the site itself has nowhere to run: a `tsg.yml` of routes, Nunjucks templates and GraphQL queries.
+Customers who built their site with takeshape-ssg lose more than content after January 15, 2027. TakeShape builds and deploys those sites on its own servers, and every page's data comes from TakeShape's GraphQL API. `ts2emdash.mts` moves the content into EmDash, but the site itself has nowhere to run: a `tsg.yml` of routes, Nunjucks templates and GraphQL queries.
 
 This design adds three things to the `emdash/` package:
 
@@ -37,7 +37,7 @@ A customer without a coding agent follows the same steps from the guide. The ski
 ## Non-goals
 
 - Translating the customer's front-end build (webpack, Sass, PostCSS, client-side JS). It keeps running as it does today and writes into the Astro project's `public/` instead of `static/`.
-- Translating browser code that calls TakeShape at runtime. On the real sites, several front-end files each import one config module that holds the `api.takeshape.io` endpoint and a token. They drive lists, search and other blocks that fill in after the page loads. Until December 31 they keep working; after that, those blocks go blank. The translator finds every call and lists it in the report with its query, and the customer's coding agent replaces each one, guided by the resolution skill. That is planned agent work, not a translator bug (Mark's decision).
+- Translating browser code that calls TakeShape at runtime. On the real sites, several front-end files each import one config module that holds the `api.takeshape.io` endpoint and a token. They drive lists, search and other blocks that fill in after the page loads. Until January 15 they keep working; after that, those blocks go blank. The translator finds every call and lists it in the report with its query, and the customer's coding agent replaces each one, guided by the resolution skill. That is planned agent work, not a translator bug (Mark's decision).
 - Byte-identical HTML. Minification, whitespace, attribute order and asset hosts differ, and the compare normalizes them.
 - Reproducing build failures. takeshape-ssg aborts the build on `null | image`, so no deployed page ever hit it. The new helpers return `''` instead.
 - Hosting on anything but Cloudflare Workers.
@@ -49,7 +49,7 @@ A customer without a coding agent follows the same steps from the guide. The ski
 
 These would make the work a failure even if it technically runs:
 
-- A compare that passes while a visitor would see a difference: a missing page, a broken link, a wrong or missing image, a block of content gone. That includes blocks the browser fills from TakeShape, which still work until December 31.
+- A compare that passes while a visitor would see a difference: a missing page, a broken link, a wrong or missing image, a block of content gone. That includes blocks the browser fills from TakeShape, which still work until January 15.
 - Generated code a developer can't follow, such as one opaque render function per page or Nunjucks hidden inside Astro.
 - A URL that changes without the compare saying so.
 - The translator dropping something without the report saying so.
@@ -244,7 +244,7 @@ node compare-sites.mts <old site URL> <new site URL> [--urls <list>] [--out comp
 
 The reference is the old site as deployed. Before exporting, the migration skill has the customer freeze edits in TakeShape and run one last deploy there, so the live site, the code and the export all match. The agent asks the customer before triggering that deploy, since it touches their production site. (My call.)
 
-For the real sites in our own tests, the reference is the live site when the code on disk is what's deployed. Otherwise it's a fresh takeshape-ssg 12.21.1 build of the code on disk against the live TakeShape API, made before December 31 and kept as a golden. (My call.)
+For the real sites in our own tests, the reference is the live site when the code on disk is what's deployed. Otherwise it's a fresh takeshape-ssg 12.21.1 build of the code on disk against the live TakeShape API, made by January 15 and kept as a golden. (My call.)
 
 The compare must run before anything is public, against the new site running locally on the migrated content, and again against the deployed site. The builder picks the local setup: `astro dev` on Cloudflare's local bindings with the content loaded through site transfer, or something simpler that gives the same pages. Crawling is polite: limited concurrency and a delay setting.
 
@@ -260,7 +260,7 @@ Both follow the guide's rules: self-serve only, nothing that invites the custome
 ## Testing
 
 1. Differential tests for the template translation. For each Nunjucks construct, each stock filter and each TakeShape filter, run the input through real Nunjucks 3.2.0 with takeshape-ssg's filters and through the translated Astro output, using the same context, and compare. These run offline in `npm test`.
-2. Starter sites. TakeShape's starters on GitHub (`takeshape/takeshape-starter-{blog,books,jobboard,portfolio,shop,startup}`) match the content of our shape-* fixtures. Each starter's templates plus its fixture export make a full test site. Golden output comes from building the starter with takeshape-ssg against a TakeShape project holding that content, before December 31. Goldens are committed so the tests keep working after shutdown.
+2. Starter sites. TakeShape's starters on GitHub (`takeshape/takeshape-starter-{blog,books,jobboard,portfolio,shop,startup}`) match the content of our shape-* fixtures. Each starter's templates plus its fixture export make a full test site. Golden output comes from building the starter with takeshape-ssg against a TakeShape project holding that content, by January 15. Goldens are committed so the tests keep working after shutdown.
 3. Real sites: two customer sites and takeshape.io, all on disk. Translate each one, run it on its exported content, and compare it against the reference described under "Compare". For the larger customer site, Mark runs the takeshape-ssg build locally when the work reaches that point. Customer sites are tested locally only: those tests skip when the data is missing, and nothing from those sites (code, exports, crawls, goldens) is committed, since customers download from this repo. (My call.)
 4. Cloudflare: deploy at least one starter and one real site to a Cloudflare test account and compare against the deployed URL. Measure CPU and D1 queries per page.
 
@@ -285,7 +285,7 @@ The skills and the guide section grow with each step, so a customer whose site l
 
 The plan raises these with Mark when it reaches them:
 
-- TakeShape projects holding the starter content, needed to build starter goldens before December 31, and whose account they live under.
+- TakeShape projects holding the starter content, needed to build starter goldens by January 15, and whose account they live under.
 - Exports of the other customer site and takeshape.io.
 - A Cloudflare test account with Workers Paid and Images for the deploy tests. `CLAUDE.md` notes the R2 work is waiting on the same thing.
 

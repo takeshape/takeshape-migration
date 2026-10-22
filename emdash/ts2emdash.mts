@@ -2717,7 +2717,7 @@ if (report.tsLinks.size) {
 	L();
 	L("## Links to TakeShape-hosted files");
 	L();
-	L("These links inside rich text point at TakeShape's CDN and will stop working after December 31, 2026. Upload the files to the EmDash media library and update the links.");
+	L("These links inside rich text point at TakeShape's CDN and will stop working after January 15, 2027. Upload the files to the EmDash media library and update the links.");
 	L();
 	for (const [url, where] of report.tsLinks) L(`- ${url} (in ${[...where].slice(0, 3).join(", ")}${where.size > 3 ? "…" : ""})`);
 }

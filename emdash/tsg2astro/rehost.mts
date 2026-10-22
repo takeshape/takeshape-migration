@@ -239,7 +239,7 @@ if (apiCalls.size) {
 	lines.push(
 		"## Calls to TakeShape's API",
 		"",
-		"Browser code that queries TakeShape. It stops working on December 31, 2026; the resolve-takeshape-site-report skill says how to answer it from EmDash.",
+		"Browser code that queries TakeShape. It stops working after January 15, 2027; the resolve-takeshape-site-report skill says how to answer it from EmDash.",
 		"",
 		...[...apiCalls].map(([u, f]) => `- \`${u}\` in ${[...f].sort().join(", ")}`),
 		"",

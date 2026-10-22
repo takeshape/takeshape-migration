@@ -1,11 +1,11 @@
 ---
 name: migrate-takeshape-site
-description: Moves a website built with TakeShape's static site generator (takeshape-ssg, a site folder with a tsg.yml) to EmDash on Cloudflare Workers, then checks every page against the live site. Use when moving a site built with TakeShape's static site generator to EmDash, or when someone needs a takeshape-ssg site off TakeShape before it shuts down on December 31, 2026. Also use to pick up such a move in a new session (a migration-log.md in the work folder).
+description: Moves a website built with TakeShape's static site generator (takeshape-ssg, a site folder with a tsg.yml) to EmDash on Cloudflare Workers, then checks every page against the live site. Use when moving a site built with TakeShape's static site generator to EmDash, or when someone needs a takeshape-ssg site off TakeShape before it shuts down on January 15, 2027. Also use to pick up such a move in a new session (a migration-log.md in the work folder).
 ---
 
 # Migrate a takeshape-ssg site to EmDash
 
-TakeShape shuts down on December 31, 2026. A site built with takeshape-ssg loses its content API, its image CDN and the servers that build and deploy it. This skill moves the site to a new Astro project on EmDash that runs on Cloudflare Workers, and proves each page matches the old one before the customer switches over.
+TakeShape shuts down on January 15, 2027. A site built with takeshape-ssg loses its content API, its image CDN and the servers that build and deploy it. This skill moves the site to a new Astro project on EmDash that runs on Cloudflare Workers, and proves each page matches the old one before the customer switches over.
 
 Three scripts from the takeshape-migration repo do the work:
 

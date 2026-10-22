@@ -25,7 +25,7 @@ const KINDS: Array<[Difference["kind"], string]> = [
 	["broken-link", "Links on the new site that lead nowhere"],
 	["image", "Images that differ"],
 	["image-rules", "Settings where the local image doesn't match imgix's"],
-	["takeshape-host", "TakeShape services that stop on December 31"],
+	["takeshape-host", "TakeShape services that stop after January 15"],
 ];
 
 const MAX_LINES = 20;
@@ -68,7 +68,7 @@ export function renderReport(result: CompareResult, labels: { oldSite: string; n
 		}
 	}
 	if (result.takeshapeSiteLinks.length > 0) {
-		out.push("## Links to TakeShape's website, which go dead after December 31", "");
+		out.push("## Links to TakeShape's website, which go dead after January 15", "");
 		out.push("These links do not fail the comparison. Check whether you want to keep them.", "");
 		for (const { path, links } of result.takeshapeSiteLinks) {
 			out.push(`### ${path}`, "", ...links.map((l) => `- ${l}`), "");
