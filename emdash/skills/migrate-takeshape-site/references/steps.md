@@ -12,6 +12,49 @@ The commands use these names. Replace each with its full path or URL in every co
 | `<old-url>` | The old site as the compare reads it: the live site, for example `https://www.example.com`, or a folder holding the old site's built output, which the compare serves itself. |
 | `<new-url>` | The deployed new site, from step 8 on. |
 
+## Starting a move
+
+Before step 1, find out the following, check each answer, and write the log.
+
+1. `<work>`: the folder you were opened in, if it's empty or holds only a takeshape-migration checkout. Otherwise ask the customer for a new, empty folder outside the old site's folder.
+2. `<site>`: ask where the old site's code is. Find its `tsg.yml` with `find <folder> -name tsg.yml -not -path '*/node_modules/*'`. The folder that holds it is `<site>`. If there are several, ask which one is live.
+   - No `tsg.yml` means TakeShape doesn't build this site, and this skill doesn't apply. Tell the customer, and offer the guide's steps 1 to 7 instead (`<repo>/emdash/README.md`): they move the content to EmDash, and the customer's own front end then needs updating. Keep the log the same way, and write at its top that the move follows the guide.
+   - The compare checks the new site against the live one, so `<site>` has to hold the code that's live. If it's a git checkout, show the customer `git -C <site> status --short --branch` and `git -C <site> log -1 --oneline`, and ask whether that's the code TakeShape deploys, so step 2's last deploy ships exactly what's in it.
+3. `<old-url>`: ask for the address visitors use, and check that it answers with `curl -sL -o /dev/null -w '%{http_code} %{url_effective}\n' <old-url>/`. It must print 200. If it ends on another address (`http` to `https`, or a bare domain to `www`), use that one. If the live site can't be crawled (a login in front of it, a host that blocks crawlers), ask for a folder holding the old site's built output instead.
+4. The front end: read `<site>/package.json`, and the one in the repo's root if `<site>` is a subfolder. A script that builds CSS or JavaScript into `static/` (webpack or Sass, say) means the site has a front end of its own. Ask the customer how they ran it before a TakeShape deploy, and on which Node version. Step 2 runs it, and step 6 moves it into `<out>/frontend/`.
+5. Run `grep -n 'env\.' <site>/tsg.yml` and tell the customer the names it finds, so they can look up the values TakeShape's build had. Step 2 asks for them.
+6. Check `node --version` (22.22 or later) and `git --version`. Tell the customer what they'll need later: admin access to the TakeShape project (step 2) and a Cloudflare account on Workers Paid (step 8).
+
+Then write the log, show the customer what you found, and outline the ten steps and the six stop points in a few lines. Start step 1 when they say go.
+
+## Picking up a move
+
+A session can end anywhere, even partway through a step. Before you run anything:
+
+1. Read `<work>/migration-log.md`. Its names give every path and URL. If its top says the move follows the guide, pick up there.
+2. Check the disk against it:
+   - `git -C <out> status --short` and `git -C <out> log --oneline -5`. Uncommitted changes are a fix in progress: show them to the customer before you go on.
+   - If `<work>/server.pid` exists, a server may still be running. Stop it as "Running servers" says, `pgrep` check included.
+   - If the log's last step is a compare that hasn't come back clean, read its newest report.
+   - Step 8's token terminal belongs to the customer. If they closed it, they run its `export` and `read` lines again before the next `emdash migrate`.
+3. Ask whether anyone edited content in TakeShape since the export the log names. If so, the end of "Cutover" says what to redo.
+4. Tell the customer the last step the log shows done, what the disk shows, and the next step. Where the log and the disk disagree, ask.
+
+A yes from an earlier session covers only what the log shows was done with it, so ask again at every stop point still ahead. Values the log leaves out on purpose, such as a secret `${env.NAME}` value, have to come from the customer again when a step needs them.
+
+If there's no log but `<work>` holds `takeshape-migration/` and `emdash-site/`, the move started before this skill kept one. Ask the customer how far it got, check the disk as above, and write the log from both.
+
+## The log
+
+`<work>/migration-log.md` lets any session pick up the move. Write it before step 1, then bring it up to date each time a step or a fix finishes and each time the customer answers at a stop point. It holds:
+
+- The names in the table above, plus `<account>` and `<db>` from step 8, each with its value.
+- One line per step: the date, its result (an exit code, a count, a report's path) and anything left to do.
+- Every decision, with its date: the answer at each stop point, each `--ignore-text` pattern and what it hides, each difference the customer accepted, the front end's build command.
+- The next step, in one line, kept current.
+
+Never write a password, API key or token in it. For a `${env.NAME}` value, write the name only, unless the customer says the value isn't secret.
+
 ## Running servers
 
 Steps 5 and 7 and every fix loop start a server that keeps running while you work. Start each one in its own process group, so one command later stops it and everything it started. `npm run dev` starts workerd, and stopping only the npm process can leave workerd running.

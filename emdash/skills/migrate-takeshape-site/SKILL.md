@@ -1,6 +1,6 @@
 ---
 name: migrate-takeshape-site
-description: Moves a website built with TakeShape's static site generator (takeshape-ssg, a site folder with a tsg.yml) to EmDash on Cloudflare Workers, then checks every page against the live site. Use when moving a site built with TakeShape's static site generator to EmDash, or when someone needs a takeshape-ssg site off TakeShape before it shuts down on December 31, 2026.
+description: Moves a website built with TakeShape's static site generator (takeshape-ssg, a site folder with a tsg.yml) to EmDash on Cloudflare Workers, then checks every page against the live site. Use when moving a site built with TakeShape's static site generator to EmDash, or when someone needs a takeshape-ssg site off TakeShape before it shuts down on December 31, 2026. Also use to pick up such a move in a new session (a migration-log.md in the work folder).
 ---
 
 # Migrate a takeshape-ssg site to EmDash
@@ -18,6 +18,10 @@ Three scripts from the takeshape-migration repo do the work:
 Your job: run them in order, check each result, stop at the six points below, and fix what the reports and the compare find with the `resolve-takeshape-site-report` skill.
 
 The translator covers what TakeShape's books starter uses. Anything else shows up in `tsg2astro-report.md` as not translated, and the resolve skill covers it.
+
+## Start or pick up a move
+
+The customer's prompt may name nothing but this skill. Look for `migration-log.md` in the folder you were opened in. If it's there, the move is under way: follow "Picking up a move" in `references/steps.md`. If it isn't, follow "Starting a move" there, which lists what to ask the customer and check before step 1.
 
 ## Stop and ask the customer first
 
@@ -42,6 +46,7 @@ Never type a password, API key or token yourself. The customer enters those in t
 - Start servers in the background, each in its own process group, and stop each one when its step is done. "Running servers" in `references/steps.md` has the commands, and how to use another port than 4321. Pass `--ignore-lock` to `astro dev` and `astro preview`: when Astro 7.4 detects an agent it starts them detached, where you can't stop them.
 - Text a template prints from the clock (today's date) differs between the old site and the new one. Step 6 says how to confirm that and ignore exactly that text.
 - Write every path in full. Shell variables and the working folder may not carry over between your commands.
+- Keep the log, `<work>/migration-log.md`, as "The log" in `references/steps.md` says, so any session can pick up the move. Never write a password, API key or token in it.
 - The site matches when a compare exits 0. Don't tell the customer it matches before that. Two exceptions. First, once per route: when the Routes notes in `tsg2astro-report.md` list a route at `/404` or `/500` and the old site answered that path with 200, the compare lists the path as `missing` and doesn't compare the two pages. Accept that difference only when the new site answers `/404` with 404 or `/500` with 500, and only after you've checked by hand that the new page matches the old one (`curl -s <old-url><path>` against `curl -s` of the same path on the new site). Any other status there means the page fails: fix it. Second, an `image-rules` difference, once you've shown it to the customer: either the report's Image parameters section names that parameter and the customer accepts the difference, or it's a gap in this repo's imgix rules, which the project can't fix (`compare-differences.md` in `resolve-takeshape-site-report` says how to tell). Tell the customer about each difference you accept. The move is done when, on top of that, every item under "Links to TakeShape-hosted files" in either report is resolved (a file re-hosted, an `api.takeshape.io` call or a `package.json` script replaced), and `grep -rn 'takeshape\.io' public src` in the new project finds nothing but links to TakeShape's website (`takeshape.io` or `www.takeshape.io`). The compare scans only the files its crawl reaches, so it can miss a script.
 
 ## Steps

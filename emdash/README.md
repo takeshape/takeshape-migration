@@ -327,10 +327,16 @@ The translator covers what the books starter uses. Anything else lands in its re
 
 This folder has two agent skills:
 
-- `skills/migrate-takeshape-site` walks your agent through the steps below, checks the result of each one, and stops to ask you before the last TakeShape deploy, the Cloudflare login, the Cloudflare API token, the plan choice, a deploy from GitHub Actions and the DNS change.
+- `skills/migrate-takeshape-site` asks where your site's code is and where it's live, walks your agent through the steps below, checks the result of each one, and stops to ask you before the last TakeShape deploy, the Cloudflare login, the Cloudflare API token, the plan choice, a deploy from GitHub Actions and the DNS change. It keeps a log, `migration-log.md`, so a new session picks up where the last one stopped.
 - `skills/resolve-takeshape-site-report` tells it how to fix each kind of report item and compare difference in the generated files, including browser code that still calls TakeShape's API.
 
-Copy both folders into your agent's skills folder (`.claude/skills/` for Claude Code), or point your agent at `emdash/skills/migrate-takeshape-site/SKILL.md`, and ask it to move your site. tsg2astro also puts the resolve skill into the new project, next to EmDash's own skills. The steps below carry the same numbers as the migrate skill's, so you can switch between your agent and your keyboard at any point.
+Open your agent in a new, empty folder and paste:
+
+```text
+TakeShape shuts down on December 31, 2026. Clone https://github.com/takeshape/takeshape-migration into this folder if it isn't here yet, then follow takeshape-migration/emdash/skills/migrate-takeshape-site/SKILL.md to move my site to EmDash.
+```
+
+Paste the same prompt in the same folder to pick up in a new session. tsg2astro also puts the resolve skill into the new project, next to EmDash's own skills. The steps below carry the same numbers as the migrate skill's, so you can switch between your agent and your keyboard at any point.
 
 ### Before you start a site move
 
