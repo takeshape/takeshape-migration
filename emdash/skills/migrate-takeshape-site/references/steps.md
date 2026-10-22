@@ -137,7 +137,7 @@ Check:
 
 - It exits 0.
 - Read `<out>/takeshape/content-report.md`. "Needs your attention" lists links to missing entries, renamed slugs, and rich text kept as plain text or as TakeShape's own HTML. "Slugs taken from your site's URLs" lists entries whose slug differs from the one the converter gives without `--site`, which is expected.
-- "Links to TakeShape-hosted files" lists rich-text links into TakeShape's CDN. They break on December 31 (see the cutover list).
+- "Links to TakeShape-hosted files" lists rich-text links into TakeShape's CDN. They break after January 15 (see the cutover list).
 - Its summary says how many images and files it preloaded and that 0 failed. If some failed, run the same command again: it fetches only those.
 
 ## 4. Translate the site
@@ -201,7 +201,7 @@ node compare/compare-sites.mts <old-url> http://localhost:4321 --out <work>/comp
   --media <out> --image-index <out>/takeshape/image-index.json
 ```
 
-`--media <out>` makes each old image on TakeShape's CDN from the original the preload stored in step 3, with the rules the new site's image endpoint follows, so the compare doesn't ask TakeShape for every image on every page. To check those rules, it asks imgix (images.takeshape.io) for one image per setting, and keeps the answers in `<out>/takeshape/image-index.json`. Later runs reuse them and ask only about settings the file lacks. The first compare has to run before December 31, while imgix answers. Commit the file with the project. Every compare in this skill passes both flags.
+`--media <out>` makes each old image on TakeShape's CDN from the original the preload stored in step 3, with the rules the new site's image endpoint follows, so the compare doesn't ask TakeShape for every image on every page. To check those rules, it asks imgix (images.takeshape.io) for one image per setting, and keeps the answers in `<out>/takeshape/image-index.json`. Later runs reuse them and ask only about settings the file lacks. The first compare has to run by January 15, while imgix answers. Commit the file with the project. Every compare in this skill passes both flags.
 
 | Exit | Meaning |
 | --- | --- |
@@ -222,7 +222,7 @@ For anything else on exit 1, load `resolve-takeshape-site-report` and work throu
 
 The crawl starts from `/` and `/sitemap.xml` and follows every link on both sites, 4 requests at a time. Add `--delay-ms 200` if the live site's host rate-limits.
 
-A section called "Links to TakeShape's website" doesn't fail the compare. Show it to the customer: those links go dead after December 31.
+A section called "Links to TakeShape's website" doesn't fail the compare. Show it to the customer: those links go dead after January 15.
 
 ## 7. Check on Cloudflare's local runtime
 
@@ -447,6 +447,6 @@ Add the same `--ignore-text` as in step 6 if it needed one. Same exit codes and 
 1. The customer adds the domain to the Worker as a custom domain in Cloudflare's dashboard and moves DNS. Set `EMDASH_SITE_URL` in `<out>/.env` to the domain and run `CLOUDFLARE_ACCOUNT_ID=<account> npm run deploy`. With the GitHub Actions deploy, change `EMDASH_SITE_URL` in the workflow instead, and push to `main`.
 2. Every item under "Links to TakeShape-hosted files" in either report gets resolved as `resolve-takeshape-site-report` says for its kind: files re-hosted and their links updated, `api.takeshape.io` calls and `package.json` scripts replaced. Then `grep -rn 'takeshape\.io' public src` in `<out>` must find nothing but links to TakeShape's website (`takeshape.io` or `www.takeshape.io`).
 3. The customer revokes their TakeShape API keys. The last compare's `takeshape-host` scan must be clean, so nothing calls `api.takeshape.io`.
-4. All of it before December 31, 2026.
+4. All of it by January 15, 2027.
 
 If anyone edited TakeShape after the export, go back to step 2 before step 9: export again, then redo steps 3, 5 and 7 with `data.db`, `uploads/` and `.wrangler/state` deleted first. Your commits in `<out>` stay.

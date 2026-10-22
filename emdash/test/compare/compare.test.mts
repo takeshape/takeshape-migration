@@ -249,7 +249,7 @@ test("takeshape-site-link-does-not-fail", async () => {
 	assert.deepEqual(r.differences, []);
 	assert.deepEqual(r.takeshapeSiteLinks, [{ path: "/", links: ["https://www.takeshape.io/"] }]);
 	const md = renderReport(r, { oldSite: "old", newSite: "new" });
-	assert.match(md, /## Links to TakeShape's website, which go dead after December 31\n[\s\S]*### \/\n\n- https:\/\/www\.takeshape\.io\//);
+	assert.match(md, /## Links to TakeShape's website, which go dead after January 15\n[\s\S]*### \/\n\n- https:\/\/www\.takeshape\.io\//);
 });
 
 test("sitemap-hosts", async () => {

@@ -1,13 +1,13 @@
 # TakeShape migration
 
-TakeShape shuts down on December 31, 2026. Every project, with its content, assets and APIs, is deleted that day. This repo holds the guides and scripts for moving off TakeShape before then.
+TakeShape shuts down on January 15, 2027. From January 16, every project, with its content, assets and APIs, is inaccessible, and on January 31, 2027 it is deleted. This repo holds the guides and scripts for moving off TakeShape before then.
 
 ## Start with your coding agent
 
 The move is built for a coding agent such as Claude Code to run. It asks you where your site's code is and where it's live, then works through the steps and stops for your yes before anything that touches your live site or your accounts. Open your agent in a new, empty folder and paste:
 
 ```text
-TakeShape shuts down on December 31, 2026. Clone https://github.com/takeshape/takeshape-migration into this folder if it isn't here yet, then follow takeshape-migration/emdash/skills/migrate-takeshape-site/SKILL.md to move my site to EmDash.
+TakeShape shuts down on January 15, 2027. Clone https://github.com/takeshape/takeshape-migration into this folder if it isn't here yet, then follow takeshape-migration/emdash/skills/migrate-takeshape-site/SKILL.md to move my site to EmDash.
 ```
 
 To pick up in a new session, open your agent in the same folder and paste the same prompt. The agent keeps a log in `migration-log.md` and carries on from it.

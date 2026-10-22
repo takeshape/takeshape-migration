@@ -4,7 +4,7 @@ Status: design, 2026-10-20. Owner: Mark Catalano.
 
 ## Why
 
-Every image check in `compare-sites` fetches the old page's image from TakeShape's imgix host, images.takeshape.io. So does `test/tsg/build-image-index.mts`. Customers run the compare against their live site, several times per migration, so each run makes imgix send every image on every page. Node's `fetch` sends `Accept: */*`, which imgix answers with JPEG, while browsers mostly get WebP or AVIF. Many of those requests are probably fresh renders rather than cache hits. TakeShape pays for that bandwidth and those renders until December 31.
+Every image check in `compare-sites` fetches the old page's image from TakeShape's imgix host, images.takeshape.io. So does `test/tsg/build-image-index.mts`. Customers run the compare against their live site, several times per migration, so each run makes imgix send every image on every page. Node's `fetch` sends `Accept: */*`, which imgix answers with JPEG, while browsers mostly get WebP or AVIF. Many of those requests are probably fresh renders rather than cache hits. TakeShape pays for that bandwidth and those renders until January 15.
 
 The originals are already on the customer's machine. A site move runs the converter with `--preload-media local`, which downloads every original from assets.takeshape.io into the project's `uploads/` and records each one in a ledger. The compare can make each old image from that copy with the same imgix rules the site's image endpoint follows, and ask imgix only for a small sample that checks those rules.
 
@@ -21,7 +21,7 @@ A large customer site shows the size of the saving: its golden pages held over t
 
 - A compare run makes no request to images.takeshape.io beyond the sample, and none to assets.takeshape.io beyond originals the ledger lacks.
 - The image differences the compare reports stay as useful as today: missing or extra images, the wrong image, the wrong size, a different look.
-- After December 31, a compare still runs, offline from TakeShape, given the project folder and the saved sample.
+- After January 15, a compare still runs, offline from TakeShape, given the project folder and the saved sample.
 - The e2e and CI stay offline from TakeShape.
 
 ## Non-goals
@@ -33,7 +33,7 @@ A large customer site shows the size of the saving: its golden pages held over t
 ## Anti-goals
 
 - A compare that passes because it compares the endpoint with itself and nothing else. The sample has to stay.
-- A compare that fails every run after December 31 because imgix no longer answers.
+- A compare that fails every run after January 15 because imgix no longer answers.
 - Downloading an original twice: once by the preload, again by the compare.
 
 ## The design
@@ -59,7 +59,7 @@ A file imgix rendered as an image (a PDF's first page, a PSD) can't be made loca
 - For each setting seen on the old pages, the compare fetches one URL from imgix. Requests send a browser's `Accept` header (`image/avif,image/webp,image/*,*/*;q=0.8`).
 - Each sampled imgix image is compared with the locally made one: the size must match exactly, the hash within the compare's threshold. A mismatch is a difference of a new kind, `image-rules`, naming the URL, both sizes and the hash distance. It is reported once per setting, not per page.
 - `image-rules` counts like any other difference, so the run exits 1. It describes the same gap a page-level image difference against imgix shows today, once instead of on every page. The resolve skill's compare-differences reference explains it. A parameter the report's Image parameters section already names is a known limit: change the template or accept the difference. Any other is a gap in this repo's imgix rules, and the customer notes it as a known difference. (Claude's call.)
-- If imgix doesn't answer (after December 31, or offline), the report says the rules check couldn't run for those settings, and the run's exit code doesn't change because of it.
+- If imgix doesn't answer (after January 15, or offline), the report says the rules check couldn't run for those settings, and the run's exit code doesn't change because of it.
 
 ### Crops where imgix picks the spot
 
@@ -78,7 +78,7 @@ A ledger row whose `source_url` is on assets.takeshape.io holds the original. A 
 
 ### Who uses it
 
-- The migrate skill and the guide's site-move steps: the converter always with `--preload-media local`; every compare command with `--media <project folder>` and `--image-index <project folder>/takeshape/image-index.json`. The first compare before December 31 records the sample; the file is small and belongs in git.
+- The migrate skill and the guide's site-move steps: the converter always with `--preload-media local`; every compare command with `--media <project folder>` and `--image-index <project folder>/takeshape/image-index.json`. The first compare by January 15 records the sample; the file is small and belongs in git.
 - `test/tsg/e2e.mts`: the compare gets the e2e project's folder as `--media` and `test/tsg/sites/shape-books/image-index.json` as the saved sample, so it makes no request to a TakeShape host, which the e2e already enforces.
 - `test/tsg/build-image-index.mts` and its test are removed: the compare now does that job. `image-index.json` for shape-books keeps its entries: they are the recorded sample.
 

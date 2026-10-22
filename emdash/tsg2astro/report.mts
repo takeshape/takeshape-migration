@@ -10,7 +10,7 @@ const SECTIONS: Array<{ kind: ReportKind; title: string; intro: string }> = [
 		intro: "Images that pass a size go through the site's image endpoint (/_takeshape/image), which honors imgix's w, h, dpr, fit, crop, fp-x, fp-y, bg, fill, fill-color, flip, fm, auto and q. Each line names a place that passes a parameter or value it ignores, so those images can come out at another size, crop or look than on the old site.",
 	},
 	{ kind: "env", title: "Environment variables", intro: "Values the site takes from the environment. Each line says when the value is read and how to change it." },
-	{ kind: "takeshape-reference", title: "Links to TakeShape-hosted files", intro: "These point at TakeShape and will stop working after December 31, 2026." },
+	{ kind: "takeshape-reference", title: "Links to TakeShape-hosted files", intro: "These point at TakeShape and will stop working after January 15, 2027." },
 	{ kind: "query", title: "Queries", intro: "These GraphQL queries needed changes or could not be mapped to EmDash." },
 	{ kind: "note", title: "Notes", intro: "Things worth knowing." },
 ];

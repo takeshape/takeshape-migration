@@ -97,7 +97,7 @@ Build order: tsg2astro owns `public/` and copies the old `static/` into it on ev
 
 ## Browser code that calls TakeShape
 
-Some sites fetch content in the browser straight from TakeShape's API: search, filtered lists, "load more" buttons. That code keeps working until December 31, then those blocks go blank. The compare flags it as `takeshape-host` on every JavaScript or JSON file that names `api.takeshape.io`. Replacing them is planned work for you. Replace each call:
+Some sites fetch content in the browser straight from TakeShape's API: search, filtered lists, "load more" buttons. That code keeps working until January 15, then those blocks go blank. The compare flags it as `takeshape-host` on every JavaScript or JSON file that names `api.takeshape.io`. Replacing them is planned work for you. Replace each call:
 
 1. Add an endpoint to the new site that answers the same query from EmDash with a loader.
 2. Point the front-end code at it.

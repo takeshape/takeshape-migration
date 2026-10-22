@@ -154,7 +154,7 @@ function scanTakeshape(path: string, f: Fetched, diffs: Difference[], siteLinks:
 		else hosts.set(host, (hosts.get(host) ?? 0) + 1);
 	}
 	for (const [host, n] of hosts) {
-		diffs.push({ path, kind: "takeshape-host", detail: `Mentions ${host} ${n === 1 ? "once" : `${n} times`}. TakeShape turns this service off on December 31.` });
+		diffs.push({ path, kind: "takeshape-host", detail: `Mentions ${host} ${n === 1 ? "once" : `${n} times`}. TakeShape turns this service off after January 15.` });
 	}
 	if (links.size > 0) siteLinks.push({ path, links: [...links] });
 }

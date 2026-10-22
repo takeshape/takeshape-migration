@@ -20,7 +20,7 @@ Copied paths: `tsg.yml`, `src/templates/`, `static/` and `.takeshape/pattern/`.
 
 ## Assets and image index
 
-These let the end-to-end test run after TakeShape's CDN goes away on December 31 (`npm run test:tsg-e2e -- shape-books`, see the header of `test/tsg/e2e.mts`).
+These let the end-to-end test run after TakeShape's CDN goes away after January 15 (`npm run test:tsg-e2e -- shape-books`, see the header of `test/tsg/e2e.mts`).
 
 - `assets/` holds 19 generated placeholders, one for each of the export's 19 assets. Each has its original's pixel size, image format, channel count and EXIF orientation tag: a two-color gradient with four large shapes and the text `placeholder <width>x<height>`, drawn with sharp. The shapes are large so the compare's image hash stays stable under resizing. `412px-Alice_par_John_Tenniel_30.png` carries mild noise to stay over 100,000 bytes, which `test/tsg/image-endpoint.test.mts` relies on. The files are not TakeShape's sample images.
 - The project and asset IDs throughout this site's files (the export, `golden/`, `cache/`, the asset folder names, `image-index.json` and `site/.takeshape/pattern/`) are made up. The swap rewrote `site/.takeshape/pattern/schema.json` and `data.jsonl` too, so those two files no longer match the starter at c464c77.

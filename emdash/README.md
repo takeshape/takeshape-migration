@@ -4,9 +4,9 @@
 
 ## Overview
 
-TakeShape shuts down on **December 31, 2026**, and every project, its content, its assets, and its APIs are deleted that day. This guide moves a TakeShape CMS project to [EmDash](https://emdashcms.com), an open source, agent-ready CMS for Astro from Cloudflare, using a conversion script we built and tested against TakeShape's own sample projects.
+TakeShape shuts down on **January 15, 2027**. From January 16, every project, its content, its assets, and its APIs are inaccessible, and on January 31, 2027 they are deleted. This guide moves a TakeShape CMS project to [EmDash](https://emdashcms.com), an open source, agent-ready CMS for Astro from Cloudflare, using a conversion script we built and tested against TakeShape's own sample projects.
 
-Aim to finish by **[December 1, 2026]** so you have time to test. Images and files are copied from TakeShape's CDN while you import, so the import itself has to run before December 31.
+Aim to finish by **December 15, 2026** so you have time to test. Images and files are copied from TakeShape's CDN while you import, so the import itself has to run by January 15, 2027.
 
 **What moves:** your content model, every entry with its published or draft status, rich text (with headings, lists, links, pullquotes, captioned images and embeds), images and files, relationships, plus tags or categories.
 
@@ -63,7 +63,7 @@ takeshape export --project --to ./takeshape-export
 
 - **API:** run the `exportProject` mutation, then poll `getProjectExport(id: …)` until `status` is `completed` and `file` holds the download URL. Don't pass `empty: true`, which exports the structure without content.
 
-Keep the ZIP somewhere safe. It is your backup of the project after December 31. For a backup of the image and file bytes too, add `--download-assets ./takeshape-assets` when you run the script in step 3.
+Keep the ZIP somewhere safe. It is your backup of the project after January 15. For a backup of the image and file bytes too, add `--download-assets ./takeshape-assets` when you run the script in step 3.
 
 ## Step 2: Create your EmDash site
 
@@ -100,7 +100,7 @@ It writes three files:
 **Read the report before importing.** Three sections matter most:
 
 - **Needs your attention:** relationships to missing entries, slugs that were renamed to stay unique, and rich text the script kept as plain text or as TakeShape's own HTML
-- **Links to TakeShape-hosted files:** links inside rich text that point at `images.takeshape.io` or `assets.takeshape.io`. These break on December 31; upload those files to the EmDash media library and update the links after import.
+- **Links to TakeShape-hosted files:** links inside rich text that point at `images.takeshape.io` or `assets.takeshape.io`. These break after January 15; upload those files to the EmDash media library and update the links after import.
 - **Not migrated:** fields resolved from connected services, and anything you skipped
 
 | Option | What it does |
@@ -308,11 +308,11 @@ Two limits apply to every site import. By default EmDash accepts files up to 50 
 4. Re-host the files the report lists under **Links to TakeShape-hosted files**, and update those links.
 5. Revoke your TakeShape API keys and confirm nothing still calls `api.takeshape.io`.
 
-Finish all of it before December 31, 2026.
+Finish all of it by January 15, 2027.
 
 ## Moving a takeshape-ssg site
 
-TakeShape builds and deploys sites made with its static site generator, takeshape-ssg: a folder with a `tsg.yml`, Nunjucks templates and GraphQL queries. Every page gets its data from TakeShape's API and its images from TakeShape's CDN, so on December 31 the site loses its content API, its images and its builds. This section moves the whole site to EmDash on Cloudflare Workers, and proves every page still matches before you switch.
+TakeShape builds and deploys sites made with its static site generator, takeshape-ssg: a folder with a `tsg.yml`, Nunjucks templates and GraphQL queries. Every page gets its data from TakeShape's API and its images from TakeShape's CDN, so on January 16, 2027 the site loses its content API, its images and its builds. This section moves the whole site to EmDash on Cloudflare Workers, and proves every page still matches before you switch.
 
 Two more scripts in this folder do it:
 
@@ -333,7 +333,7 @@ This folder has two agent skills:
 Open your agent in a new, empty folder and paste:
 
 ```text
-TakeShape shuts down on December 31, 2026. Clone https://github.com/takeshape/takeshape-migration into this folder if it isn't here yet, then follow takeshape-migration/emdash/skills/migrate-takeshape-site/SKILL.md to move my site to EmDash.
+TakeShape shuts down on January 15, 2027. Clone https://github.com/takeshape/takeshape-migration into this folder if it isn't here yet, then follow takeshape-migration/emdash/skills/migrate-takeshape-site/SKILL.md to move my site to EmDash.
 ```
 
 Paste the same prompt in the same folder to pick up in a new session. tsg2astro also puts the resolve skill into the new project, next to EmDash's own skills. The steps below carry the same numbers as the migrate skill's, so you can switch between your agent and your keyboard at any point.
@@ -417,7 +417,7 @@ node compare/compare-sites.mts https://www.example.com http://localhost:4321 --o
   --media ~/sites/my-site-emdash --image-index ~/sites/my-site-emdash/takeshape/image-index.json
 ```
 
-`--media` makes each old image on TakeShape's CDN from the original step 3 stored, with the rules your new site's image endpoint follows. To check those rules, the compare asks TakeShape's image CDN for one image per setting and keeps its answers in `takeshape/image-index.json`, so later runs ask only about settings the file lacks. Run your first compare before December 31, and commit the file with the project.
+`--media` makes each old image on TakeShape's CDN from the original step 3 stored, with the rules your new site's image endpoint follows. To check those rules, the compare asks TakeShape's image CDN for one image per setting and keeps its answers in `takeshape/image-index.json`, so later runs ask only about settings the file lacks. Run your first compare by January 15, and commit the file with the project.
 
 Exit code 0 means no differences. 1 means there are some, listed in `compare-node.md`. 2 means a site didn't answer. Fix each difference in the generated files (the resolve skill explains each kind), rebuild with `npm run build:node`, restart the server, and compare again until it exits 0. If your site has a front-end build of its own, move it into the new project before you fix browser code: see [A front-end build of your own](#a-front-end-build-of-your-own). A route at `/404` or `/500` can leave one difference each, under the conditions in [Reading the reports](#reading-the-reports).
 
@@ -616,7 +616,7 @@ Add the same `--ignore-text` as in step 6. Once it exits 0, or shows only the di
 2. Resolve every item either report lists under **Links to TakeShape-hosted files**: re-host each file and update its links, and replace each `api.takeshape.io` call or `package.json` script.
 3. Revoke your TakeShape API keys.
 
-Finish before December 31, 2026.
+Finish by January 15, 2027.
 
 ### A front-end build of your own
 
@@ -758,7 +758,7 @@ For EmDash questions, the [EmDash docs](https://docs.emdashcms.com) and the EmDa
 - [ ] Deployed EmDash and pointed the frontend at it
 - [ ] takeshape-ssg sites: the compare against production exits 0 (or shows only the differences that [Reading the reports](#reading-the-reports) lets you keep, the `/404` and `/500` pages checked by hand), and nothing on the new site calls TakeShape
 - [ ] Revoked TakeShape API keys
-- [ ] Finished by [December 1, 2026], ahead of the December 31 shutdown
+- [ ] Finished by December 15, 2026, ahead of the January 15 shutdown
 
 ## Sources
 

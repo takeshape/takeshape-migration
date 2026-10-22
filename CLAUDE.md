@@ -1,6 +1,6 @@
 # TakeShape migration
 
-TakeShape shuts down on **December 31, 2026**; every project is deleted that day with its content and assets, and its APIs stop answering. This repo holds the guides and scripts for moving customers off TakeShape. It is public. The private archive is `takeshape/takeshape-migration-archive`. Write nothing here that names a customer or points back to one: put "a large customer site" where a name, a domain, shape or page names, or counts from a customer's site would go. Leave out Cloudflare account addresses, deploy version IDs and paths from TakeShape's private source too.
+TakeShape shuts down on **January 15, 2027**, the last day customers can export. From January 16 every project, with its content, assets and APIs, is inaccessible, and on January 31, 2027 it is deleted. This repo holds the guides and scripts for moving customers off TakeShape. It is public. The private archive is `takeshape/takeshape-migration-archive`. Write nothing here that names a customer or points back to one: put "a large customer site" where a name, a domain, shape or page names, or counts from a customer's site would go. Leave out Cloudflare account addresses, deploy version IDs and paths from TakeShape's private source too.
 
 Owner: Mark Catalano, TakeShape co-founder. The EmDash work started in a Claude session on 2026-10-05 and moved here on 2026-10-14.
 

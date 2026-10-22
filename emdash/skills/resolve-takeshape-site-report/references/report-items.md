@@ -112,7 +112,7 @@ Confirm: the pages that print the value show no `content` difference.
 
 ## Links to TakeShape-hosted files
 
-Files in `static/` (now `public/`) and scripts in the old site's `package.json` that name a `takeshape.io` host. They stop working on December 31.
+Files in `static/` (now `public/`) and scripts in the old site's `package.json` that name a `takeshape.io` host. They stop working after January 15.
 
 - An image or file URL in CSS, JavaScript or HTML under `public/`: download the file while TakeShape's CDN is still up, save it under `public/`, and change the URL to the local path. Download the exact URL the file names, query string included, so the picture keeps the size the old site showed. A file the front end builds (its CSS or JavaScript bundle) gets the change in its source in `<out>/frontend/` instead: see `takeshape-host` in `compare-differences.md`.
 - `api.takeshape.io` in front-end code: follow "Browser code that calls TakeShape" in `SKILL.md`.
